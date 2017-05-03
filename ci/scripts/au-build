@@ -1,4 +1,6 @@
 #!/bin/sh
 
 cd source/src
+pwd
+ls ./node_modules
 au build
