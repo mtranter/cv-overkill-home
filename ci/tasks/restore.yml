@@ -18,4 +18,4 @@ run:
 
 outputs:
   - name: restored-project
-    dir: source
+    path: source
