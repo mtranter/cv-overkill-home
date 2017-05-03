@@ -20,8 +20,9 @@ run:
   args:
     - -exc
     - |
-      mkdir -p /bundled/scripts
+      mkdir -p /bundled/src/scripts /bundled/deploy
       mv cache/node_modules source/src
       cd source/src && au build
-      cp ./index.html /bundled/
-      cp ./scripts/* /bundled/scripts
+      cp ./index.html /bundled/src/
+      cp ./scripts/* /bundled/src/scripts
+      cp ./../deploy/* /bundled/deploy

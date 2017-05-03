@@ -7,22 +7,9 @@ image_resource:
     repository: hashicorp/terraform
     tag: 'light'
 
-outputs:
+inputs:
   - name: bundled
 
-inputs:
-  - name: source
-  - name: npm-repo-cache
-    path: /cache
-
 run:
-  path: sh
-  args:
-    - -exc
-    - |
-      mkdir -p /bundled/src/scripts /bundled/deploy
-      mv cache/node_modules source/src
-      cd source/src && au build
-      cp ./index.html /bundled/src/
-      cp ./scripts/* /bundled/src/scripts
-      cp ./../deploy/* /bundled/deploy
+  path: plan
+  dir: bundled
