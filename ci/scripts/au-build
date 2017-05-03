@@ -1,5 +1,4 @@
 #!/bin/sh
 
 cd source/src
-pwd
 au build
