@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: mtranter/aurelia
+    tag: '2.1'
+
+inputs:
+- name: source
+
+run:
+  path: au build
+  dir: 
