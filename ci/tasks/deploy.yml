@@ -11,5 +11,7 @@ inputs:
   - name: bundled
 
 run:
-  path: plan
-  dir: bundled
+  path: terraform
+  args:
+    - plan
+  dir: bundled/deploy
