@@ -14,4 +14,4 @@ run:
   path: au
   args:
     - build
-  dir: source/src
+  dir: restored-project/src
