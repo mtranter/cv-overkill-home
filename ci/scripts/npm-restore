@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd source/src
-au build
+npm restore
