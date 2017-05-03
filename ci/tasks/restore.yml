@@ -5,7 +5,7 @@ image_resource:
   type: docker-image
   source:
     repository: mtranter/aurelia
-    tag: '6-alpine'
+    tag: '6-alpine-2'
 
 inputs:
 - name: source
