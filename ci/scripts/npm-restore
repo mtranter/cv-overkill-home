@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd source/src
-npm restore
+npm install
