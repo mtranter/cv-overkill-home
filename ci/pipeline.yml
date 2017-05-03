@@ -1,0 +1,12 @@
+resources:
+  - name: source
+    type: git
+    source:
+      uri: https://github.com/mtranter/cv-overkill-home.git
+      branch: master
+jobs:
+  - name: restore
+    plan:
+      - get: source
+      - task: restore
+        file: source/ci/tasks/restore.yml
