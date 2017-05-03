@@ -7,6 +7,9 @@ image_resource:
     repository: mtranter/aurelia
     tag: '6-alpine-2'
 
+outputs:
+  - name: bundled
+
 inputs:
   - name: source
   - name: npm-repo-cache
@@ -19,3 +22,6 @@ run:
     - |
       mv cache/node_modules source/src
       cd source/src && au build
+      mkdir /bundled/scripts
+      cp ./index.html /bundled/
+      cp ./scripts/* /bundled/scripts
