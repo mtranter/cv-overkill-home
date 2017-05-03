@@ -11,4 +11,4 @@ inputs:
   - name: source
 
 run:
-  path: ci/scripts/au-build
+  path: source/ci/scripts/au-build
