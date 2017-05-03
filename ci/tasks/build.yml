@@ -8,10 +8,7 @@ image_resource:
     tag: '6-alpine-2'
 
 inputs:
-  - name: restored-project
+  - name: source
 
 run:
-  path: au
-  args:
-    - build
-  dir: restored-project/src
+  path: ci/scripts/au-build

@@ -15,7 +15,3 @@ run:
   args:
     - install
   dir: source/src
-
-outputs:
-  - name: restored-project
-    path: source
