@@ -2,5 +2,6 @@
 
 cd source/src
 pwd
+ls
 ls ./node_modules
 au build
