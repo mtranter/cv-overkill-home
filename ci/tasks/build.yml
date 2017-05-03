@@ -8,10 +8,10 @@ image_resource:
     tag: '6-alpine-2'
 
 inputs:
-- name: source
+- name: restored-project
 
 run:
   path: au
   args:
     - build
-  dir: src
+  dir: source/src
