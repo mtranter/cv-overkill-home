@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd src
+cd source/src
 au build
