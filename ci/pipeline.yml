@@ -11,3 +11,11 @@ jobs:
         trigger: true
       - task: restore
         file: source/ci/tasks/restore.yml
+
+  - name: build
+    plan:
+      - get: source
+        trigger: true
+        passed: [restore]
+      - task: build
+        file: source/ci/tasks/build.yml
