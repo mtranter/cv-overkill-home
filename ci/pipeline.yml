@@ -5,17 +5,11 @@ resources:
       uri: https://github.com/mtranter/cv-overkill-home.git
       branch: master
 jobs:
-  - name: restore
+  - name: Restore & Build
     plan:
       - get: source
         trigger: true
       - task: restore
         file: source/ci/tasks/restore.yml
-
-  - name: build
-    plan:
-      - get: source
-        trigger: true
-        passed: [restore]
       - task: build
         file: source/ci/tasks/build.yml
