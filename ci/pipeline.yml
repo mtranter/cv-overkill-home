@@ -14,7 +14,8 @@ resources:
     source:
       <<: *repo-source # the source is the same as the corresponding git resource ...
       paths: # ... except that it's only interested in files listing dependencies
-        - src/package.json
+        - package.json
+      project-path: src
 jobs:
   - name: cache
     plan:
