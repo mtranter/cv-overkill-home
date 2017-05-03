@@ -8,5 +8,6 @@ jobs:
   - name: restore
     plan:
       - get: source
+        trigger: true
       - task: restore
         file: source/ci/tasks/restore.yml
