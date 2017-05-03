@@ -17,5 +17,5 @@ run:
   dir: src
 
 outputs:
-  name: restored-project
-  path: src
+  - name: restored-project
+    path: src
