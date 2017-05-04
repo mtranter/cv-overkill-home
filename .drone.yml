@@ -1,3 +1,4 @@
+
 pipeline:
   build:
     image: mtranter/aurelia:6-alpine-2
