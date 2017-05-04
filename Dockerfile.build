@@ -1,3 +1,4 @@
 FROM mtranter/aurelia:6-alpine-2
-ADD ./src build
-WORKDIR build
+RUN mkdir /app
+WORKDIR /app
+ADD ./src /app
