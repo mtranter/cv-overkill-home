@@ -1,0 +1,7 @@
+pipeline:
+  build:
+    image: mtranter/aurelia:6-alpine-2
+    commands:
+      - cd src
+      - npm install
+      - au build
