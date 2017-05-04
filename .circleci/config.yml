@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/build
+    docker:
+      - image: mtranter/aurelia:6-alpine-2
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "src/package.json" }}
+      - run:
+          name: Instal NPM Deps
+          command: |
+            cd src
+            npm install
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "src/package.json" }}
+          paths:
+            - "src/node_modules"
+      - run:
+          command: |
+            cd src
+            au build

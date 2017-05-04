@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd source/src
-npm install
