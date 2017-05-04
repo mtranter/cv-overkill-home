@@ -1,4 +1,5 @@
 aurelia:
-  image: mtranter/aurelia:6-alpine-2
+  build:
+    dockerfile: Dockerfile.build
   volumes:
     - ./tmp/node_modules:/node_modules

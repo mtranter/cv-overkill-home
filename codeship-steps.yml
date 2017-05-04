@@ -2,7 +2,9 @@
   type: serial
   steps:
     - service: aurelia
-      command: sh build.sh
+      command: npm build
+    - service: aurelia
+      command: au build
 
 
 
