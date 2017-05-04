@@ -15,5 +15,6 @@ run:
   args:
     - -exc
     - |
+      ls
       cd bundled/deploy
       terraform plan
