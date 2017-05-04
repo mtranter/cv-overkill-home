@@ -4,6 +4,11 @@ jobs:
     working_directory: ~/build
     docker:
       - image: mtranter/aurelia:6-alpine-2
+      - image: hashicorp/terraform:light
+        environment:
+          AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+          AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+          AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     steps:
       - checkout
       - restore_cache:
@@ -21,3 +26,7 @@ jobs:
           command: |
             cd src
             au build
+      - run:
+          command: |
+            cd src
+                  au build

@@ -1,0 +1,4 @@
+aurelia:
+  image: mtranter/aurelia:6-alpine-2
+  volumes:
+    - ./tmp/node_modules:/node_modules
