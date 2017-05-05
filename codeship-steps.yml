@@ -1,10 +1,5 @@
-- name: restore-build
+- name: build
   type: serial
   steps:
     - service: aurelia
-      command: npm install
-    - service: aurelia
       command: au build
-
-
-

@@ -2,3 +2,4 @@ FROM mtranter/aurelia:6-alpine-2
 RUN mkdir /app
 WORKDIR /app
 ADD ./src /app
+RUN npm install
