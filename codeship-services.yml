@@ -1,5 +1,3 @@
 aurelia:
   build:
     dockerfile: Dockerfile.build
-  volumes:
-    - ./tmp/src:/app/node_modules
