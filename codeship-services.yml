@@ -1,3 +1,4 @@
 aurelia:
   build:
     dockerfile: Dockerfile.build
+  cached: true
