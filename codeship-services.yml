@@ -5,4 +5,5 @@ aurelia:
 terraform:
   build:
     dockerfile: Dockerfile.deploy
+  encrypted_env_file: env.encrypted
   cached: true

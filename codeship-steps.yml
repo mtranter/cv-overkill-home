@@ -3,3 +3,5 @@
   steps:
     - service: aurelia
       command: au build
+    - service: terraform
+      command: apply
