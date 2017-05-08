@@ -8,11 +8,11 @@ steps:
     build_arguments:
       - build_dir=${{main_clone}}
   aurelia_build:
-    image: mtranter/aurelia-build:${{CF_BRANCH}}
+    image: mtranter/aurelia-build
     working_directory: ${{main_clone}}/src
     description: Build Aurelia App
     commands:
-      - npm install
+      - mv /tmp/src/npm_modules ${{main_clone}}/src/
       - au build
   deploy:
     image: hashicorp/terraform
