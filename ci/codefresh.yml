@@ -1,16 +1,11 @@
 version: '1.0'
 steps:
-  setup_build_image:
-    type: build
-    image_name: mtranter/aurelia-build-cv-home
-    dockerfile: Dockerfile.build
-    tag: latest
   aurelia_build:
-    image: ${{setup_build_image}}
+    image: node:6.10.3-alpine
     working_directory: ${{main_clone}}/src
     description: Build Aurelia App
     commands:
-      - mv /tmp/src/node_modules ./
+      - mv /tmp/src/node_modules/ ./
       - au build
   deploy:
     image: hashicorp/terraform
