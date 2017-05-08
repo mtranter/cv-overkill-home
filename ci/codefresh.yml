@@ -5,14 +5,12 @@ steps:
     image_name: mtranter/aurelia-build-cv-home
     dockerfile: Dockerfile.build
     tag: latest
-    build_arguments:
-      - build_dir=${{main_clone}}
   aurelia_build:
     image: ${{setup_build_image}}
     working_directory: ${{main_clone}}/src
     description: Build Aurelia App
     commands:
-      - mv /tmp/src/npm_modules ${{main_clone}}/src/
+      - mv /tmp/src/node_modules ./src/
       - au build
   deploy:
     image: hashicorp/terraform
