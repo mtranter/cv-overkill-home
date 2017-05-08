@@ -7,7 +7,7 @@ steps:
     commands:
       - npm install
       - au test
-      - au build
+      - au build --env prod
   deploy:
     image: hashicorp/terraform
     working_directory: ${{main_clone}}/deploy

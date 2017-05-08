@@ -91,7 +91,12 @@
         "name": "vendor-bundle.js",
         "prepend": [
           "node_modules/bluebird/js/browser/bluebird.core.js",
-          "scripts/require.js"
+          "scripts/require.js",
+          "assets/js/jquery.min.js",
+          "assets/js/modernizr.custom.js",
+          "assets/js/classie.js",
+          "assets/js/bootstrap.min.js",
+          "assets/js/smoothscroll.js"
         ],
         "dependencies": [
           "aurelia-binding",

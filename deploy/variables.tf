@@ -12,7 +12,10 @@ variable "website_files" {
     "scripts/app-bundle.js",
     "scripts/require.js",
     "scripts/text.js",
-    "scripts/vendor-bundle.js"
+    "scripts/vendor-bundle.js",
+    "assets/css/bootstrap.css",
+    "assets/css/main.css",
+    "assets/css/font-awesome.min.css"
   ]
 }
 
