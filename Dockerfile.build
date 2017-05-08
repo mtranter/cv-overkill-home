@@ -1,6 +1,0 @@
-FROM mtranter/aurelia:6-alpine-2
-RUN mkdir /app
-WORKDIR /app
-ADD ./src/package.json /app
-RUN npm install
-ADD ./src /app

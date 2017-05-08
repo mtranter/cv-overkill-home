@@ -1,0 +1,14 @@
+version: '1.0'
+steps:
+  build_image:
+    type: build
+    description: Aurelia build image
+    image-name: mtranter/aurelia-build
+    tag: ${{CF_BRANCH}}
+
+  aurelia_build:
+    image_name: mtranter/aurelia-build:${{CF_BRANCH}}
+    working_directory: ${{main_clone}}/src
+    description: Build Aurelia App
+    commands:
+      - au build
