@@ -14,8 +14,8 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .feature('resources')
-    .plugin({moduleId: 'experience/plugin', resourceRelativeTo:['experience',''], config:{}} )
-    .plugin({moduleId: 'profile/plugin', resourceRelativeTo:['profile',''], config:{}});
+    .plugin({moduleId: 'experience/plugin', resourcesRelativeTo:['experience',''], config:{}} )
+    .plugin({moduleId: 'profile/plugin', resourcesRelativeTo:['profile',''], config:{}});
 
   if (environment.debug) {
     aurelia.use.developmentLogging();
