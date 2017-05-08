@@ -1,13 +1,7 @@
 version: '1.0'
 steps:
-  build_image:
-    type: build
-    description: Aurelia build image
-    image_name: mtranter/aurelia-build
-    tag: ${{CF_BRANCH}}
-    dockerfile: ./ci/Dockerfile.build
   aurelia_build:
-    image: mtranter/aurelia-build:${{CF_BRANCH}}
+    image: mtranter/aurelia:6-alpine-2
     working_directory: ${{main_clone}}/src
     description: Build Aurelia App
     commands:
