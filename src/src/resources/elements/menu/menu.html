@@ -1,0 +1,19 @@
+<template>
+  <nav class="menu" class="${layoutService.menuVisible : 'menu-open' : ''}">
+    <div class="menu-wrap">
+      <h1 class="logo"><a href="index.html#home">Mark Tranter</a></h1>
+      <i class="icon-remove menu-close"></i>
+      <a href="#home" class="smoothScroll">Home</a>
+      <a href="#about" class="smoothScroll">About</a>
+      <a href="#portfolio" class="smoothScroll">Portfolio</a>
+      <a href="#contact" class="smoothScroll">Contact</a>
+      <a href="#"><i class="icon-facebook"></i></a>
+      <a href="#"><i class="icon-twitter"></i></a>
+      <a href="#"><i class="icon-dribbble"></i></a>
+      <a href="#"><i class="icon-envelope"></i></a>
+    </div>
+
+    <!-- Menu button -->
+    <div id="menuToggle" class="${layoutService.menuVisible : 'active' : ''}" click.delegate="toggleMenu()"><i class="icon-reorder"></i></div>
+  </nav>
+</template>
