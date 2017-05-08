@@ -68,7 +68,7 @@ define('main',['exports', './environment'], function (exports, _environment) {
 
   function configure(aurelia) {
     console.log(aurelia);
-    aurelia.use.standardConfiguration().feature('resources').plugin('experience/plugin');
+    aurelia.use.standardConfiguration().feature('resources').plugin('experience/plugin').plugin('profile/plugin');
 
     if (_environment2.default.debug) {
       aurelia.use.developmentLogging();
@@ -109,6 +109,6 @@ define('resources/index',["exports"], function (exports) {
   exports.configure = configure;
   function configure(config) {}
 });
-define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${message}</h1>\n  <router-view></router-vew>\n</template>\n"; });
+define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${message}</h1>\n  <p>My Site</p>\n  <router-view></router-vew>\n</template>\n"; });
 define('text!home/index.html', ['module'], function(module) { module.exports = "<template>\n  <div>Home</div>\n</template>\n"; });
 //# sourceMappingURL=app-bundle.js.map
