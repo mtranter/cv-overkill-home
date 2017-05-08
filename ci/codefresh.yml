@@ -5,4 +5,5 @@ steps:
     working_directory: ${{main_clone}}/src
     description: Build Aurelia App
     commands:
+      - npm install
       - au build
