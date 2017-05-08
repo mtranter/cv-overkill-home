@@ -1,7 +1,0 @@
-- name: build
-  type: serial
-  steps:
-    - service: aurelia
-      command: au build
-    - service: terraform
-      command: apply

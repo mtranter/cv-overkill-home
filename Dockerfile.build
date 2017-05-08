@@ -1,7 +1,0 @@
-FROM node:6.10.3-alpine
-RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh
-RUN npm install aurelia-cli -g
-RUN mkdir -p /tmp/src
-ADD ./src/package.json /tmp/src
-RUN cd /tmp/src && npm install
