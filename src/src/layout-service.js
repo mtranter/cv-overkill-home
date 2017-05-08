@@ -4,6 +4,6 @@ export class LayoutService {
     return this._menuVisible;
   }
   toggleMenu(){
-    this._menuVisible = false;
+    this._menuVisible = !this._menuVisible;
   }
 }
