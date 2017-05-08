@@ -1,5 +1,9 @@
 <template>
   <h1>${message}</h1>
   <p>My Site</p>
+  <div repeat.for="widget of widgets">
+  <compose view-model.bind="widget.viewModel"
+           view.bind="widget.view"></compose>
+   </div>
   <router-view></router-vew>
 </template>

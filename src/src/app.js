@@ -1,10 +1,12 @@
 import {All, inject} from 'aurelia-framework';
 
 @inject(All.of('plugin.route'))
+@inject(All.of('plugin.widget.homepage.component'))
 export class App {
-  constructor(routes) {
+  constructor(routes, widgets) {
     this.message = 'Hello World!';
     this.pluginRoutes = routes
+    this.widgets = widgets;
   }
   configureRouter(config, router) {
     this.router = router;
