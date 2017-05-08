@@ -7,7 +7,7 @@ steps:
     tag: ${{CF_BRANCH}}
     dockerfile: ./ci/Dockerfile.build.ui
   aurelia_build:
-    image_name: mtranter/aurelia-build:${{CF_BRANCH}}
+    image: mtranter/aurelia-build:${{CF_BRANCH}}
     working_directory: ${{main_clone}}/src
     description: Build Aurelia App
     commands:
