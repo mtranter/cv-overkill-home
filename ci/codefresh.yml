@@ -5,6 +5,8 @@ steps:
     image_name: mtranter/aurelia-build
     dockerfile: Dockerfile.build
     tag: ${{CF_BRANCH}}
+    build_arguments:
+      - build_dir=${{main_clone}}
   aurelia_build:
     image: mtranter/aurelia-build:${{CF_BRANCH}}
     working_directory: ${{main_clone}}/src
