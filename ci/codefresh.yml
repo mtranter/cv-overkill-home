@@ -3,7 +3,7 @@ steps:
   build_image:
     type: build
     description: Aurelia build image
-    image-name: mtranter/aurelia-build
+    image_name: mtranter/aurelia-build
     tag: ${{CF_BRANCH}}
 
   aurelia_build:
