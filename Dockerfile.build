@@ -1,0 +1,4 @@
+FROM node:6.10.3-alpine
+RUN npm install aurelia-cli -g
+ADD ./src/package.json
+RUN npm install
