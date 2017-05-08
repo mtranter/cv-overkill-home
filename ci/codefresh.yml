@@ -1,7 +1,7 @@
 version: '1.0'
 steps:
   aurelia_build:
-    image: node:6.10.3-alpine
+    image: mtranter/aurelia:6-alpine-2
     working_directory: ${{main_clone}}/src
     description: Build Aurelia App
     commands:
