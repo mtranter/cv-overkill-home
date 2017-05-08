@@ -7,3 +7,12 @@ steps:
     commands:
       - npm install
       - au build
+  deploy:
+    image:hashipcorp/terraform
+    working_directory: ${{main_clone}}/deploy
+    description: Deploy using Terraform
+    environment:
+      - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY_ID}}
+      - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
+    commands:
+      - apply
