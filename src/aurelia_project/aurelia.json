@@ -96,7 +96,8 @@
           "assets/js/modernizr.custom.js",
           "assets/js/classie.js",
           "assets/js/bootstrap.min.js",
-          "assets/js/smoothscroll.js"
+          "assets/js/smoothscroll.js",
+          "assets/js/main.js"
         ],
         "dependencies": [
           "aurelia-binding",
