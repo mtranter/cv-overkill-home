@@ -1,9 +1,9 @@
 export class LayoutService {
-  menuVisible = false;
+  _menuVisible = false;
   get menuVisible() {
-    return menuVisible;
+    return _menuVisible;
   }
   toggleMenu(){
-    menuVisible = false;
+    _menuVisible = false;
   }
 }
