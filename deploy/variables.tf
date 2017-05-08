@@ -15,7 +15,8 @@ variable "website_files" {
     "scripts/vendor-bundle.js",
     "assets/css/bootstrap.css",
     "assets/css/main.css",
-    "assets/css/font-awesome.min.css"
+    "assets/css/font-awesome.min.css",
+    "assets/img/header-bg.jpg"
   ]
 }
 
@@ -23,6 +24,7 @@ variable "content_type_map" {
   default = {
     "html"    = "text/html",
     "js"      = "application/javascript",
-    "css"     = "text/css"
+    "css"     = "text/css",
+    "jpg"     = "image/jpeg"
   }
 }
