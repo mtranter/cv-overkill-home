@@ -1,5 +1,5 @@
 <template>
-  <nav class="menu" class="${layoutService.menuVisible : 'menu-open' : ''}">
+  <nav class="menu" class="${layoutService.menuVisible ? 'menu-open' : ''}">
     <div class="menu-wrap">
       <h1 class="logo"><a href="index.html#home">Mark Tranter</a></h1>
       <i class="icon-remove menu-close"></i>
@@ -14,6 +14,6 @@
     </div>
 
     <!-- Menu button -->
-    <div id="menuToggle" class="${layoutService.menuVisible : 'active' : ''}" click.delegate="toggleMenu()"><i class="icon-reorder"></i></div>
+    <div class="${layoutService.menuVisible ? 'active' : ''}" click.delegate="toggleMenu()"><i class="icon-reorder"></i></div>
   </nav>
 </template>
