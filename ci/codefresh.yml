@@ -5,7 +5,7 @@ steps:
     working_directory: ${{main_clone}}/src
     description: Build Aurelia App
     commands:
-      - mv /tmp/src/node_modules/ ./
+      - npm install
       - au build
   deploy:
     image: hashicorp/terraform
