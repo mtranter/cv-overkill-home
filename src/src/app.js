@@ -1,7 +1,6 @@
 import {All, inject} from 'aurelia-framework';
 
-@inject(All.of('plugin.route'))
-@inject(All.of('plugin.widget.homepage.component'))
+@inject(All.of('plugin.route'), All.of('plugin.widget.homepage.component'))
 export class App {
   constructor(routes, widgets) {
     this.message = 'Hello World!';
