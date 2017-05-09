@@ -1,4 +1,10 @@
-
+terraform {
+  backend "s3" {
+    bucket  = "cv-overkill-tf-state"
+    key     = "aws-infrastructure-home"
+    region  = "eu-west-1"
+  }
+}
 
 provider "aws" {
   region = "${var.region}"
