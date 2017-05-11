@@ -1,12 +1,10 @@
 import {All, inject} from 'aurelia-framework';
-import {LayoutService} from './layout-service'
 
-@inject(All.of('plugin.route'), LayoutService)
+@inject(All.of('plugin.route'))
 export class App {
-  constructor(routes, layoutService) {
+  constructor(routes) {
     this.message = 'Hello World!';
     this.pluginRoutes = routes
-    this.layoutService = layoutService;
   }
   configureRouter(config, router) {
     this.router = router;

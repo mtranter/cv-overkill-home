@@ -1,11 +1,13 @@
 import {inject} from 'aurelia-framework'
-import {LayoutService} from './../../../layout-service'
-@inject(LayoutService)
+import {HomeWidgetsService} from './../../../home/home-widgets-service'
+
+@inject(HomeWidgetsService)
 export class MenuCustomElement {
-  constructor(layoutService){
-    this.layoutService = layoutService;
+  showMenu = false;
+  constructor(widgetsSvc){
+    this.widgets = widgetsSvc.widgets;
   }
   toggleMenu() {
-    this.layoutService.toggleMenu();
+    this.showMenu = !this.showMenu;
   }
 }

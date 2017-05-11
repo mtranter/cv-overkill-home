@@ -1,19 +1,17 @@
 <template>
-  <nav class="menu" class="${layoutService.menuVisible ? 'menu-open' : ''}">
+  <nav id="theMenu" class="menu ${showMenu ? 'menu-open' : ''}">
     <div class="menu-wrap">
       <h1 class="logo"><a href="index.html#home">Mark Tranter</a></h1>
-      <i class="icon-remove menu-close"></i>
-      <a href="#home" class="smoothScroll">Home</a>
-      <a href="#about" class="smoothScroll">About</a>
-      <a href="#portfolio" class="smoothScroll">Portfolio</a>
-      <a href="#contact" class="smoothScroll">Contact</a>
-      <a href="#"><i class="icon-facebook"></i></a>
-      <a href="#"><i class="icon-twitter"></i></a>
-      <a href="#"><i class="icon-dribbble"></i></a>
-      <a href="#"><i class="icon-envelope"></i></a>
+      <i click.delegate="toggleMenu()" class="fa fa-remove menu-close"></i>
+      <a href="#home" data-scroll>Home</a>
+      <a data-scroll repeat.for="widget of widgets" href.bind="widget.href" >${widget.title}</a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-dribbble"></i></a>
+      <a href="#"><i class="fa fa-envelope"></i></a>
     </div>
 
     <!-- Menu button -->
-    <div class="${layoutService.menuVisible ? 'active' : ''}" click.delegate="toggleMenu()"><i class="icon-reorder"></i></div>
+    <div id="menuToggle" class="${showMenu ? 'active' : ''}" click.delegate="toggleMenu()"><i class="fa fa-bars" aria-hidden="true"></i></div>
   </nav>
 </template>

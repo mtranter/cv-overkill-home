@@ -1,19 +1,10 @@
 <template>
-  <div class="${layoutService.menuVisible ? 'body-push-toleft' : ''}">
-  <h1>${message}</h1>
-  <p>My Site</p>
 
-
-
+  <section id="home"></section>
   <div repeat.for="widget of widgets">
   <compose view-model.bind="widget.viewModel"
            view.bind="widget.view"></compose>
    </div>
-
-
-
-
-
 
     	<!-- ========== ABOUT SECTION ========== -->
     	<section id="about" name="about"></section>
@@ -87,5 +78,4 @@
     			</div>
     		</div>
     	</div>
-    </div>
 </template>

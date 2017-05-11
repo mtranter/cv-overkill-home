@@ -1,13 +1,14 @@
 version: '1.0'
 steps:
   aurelia_build:
-    image: mtranter/aurelia-build
+    image: mtranter/ui-module-build:latest
     working_directory: ./src
     description: Build Aurelia App
     commands:
       - npm install
-      - au test
-      - au build --env prod
+      - jspm install
+      - gulp test
+      - gulp bundle
   deploy:
     image: hashicorp/terraform
     working_directory: ${{main_clone}}/deploy

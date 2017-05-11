@@ -73,54 +73,6 @@ a:after {
     padding: 0;
 }
 
-
-/* ==========================================================================
-   Wrap Sections
-   ========================================================================== */
-
-#headerwrap {
-	background: url(http://blog.marktranter.com/content/images/2017/05/IMG_1925-1.JPG) fixed center top;
-	margin-top: -10px;
-	padding-top:20px;
-	text-align:center;
-	background-attachment: relative;
-	background-position: center center;
-	min-height: 700px;
-	width: 100%;
-
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-#headerwrap h1 {
-	margin-top: 150px;
-	color: white;
-	font-size: 70px;
-	font-weight: 700;
-}
-
-#headerwrap h3 {
-	color: white;
-	font-size: 30px;
-	font-weight: 100;
-    font-family: 'EB Garamond', serif;
-    font-style: oblique;
-}
-
-#headerwrap .logo {
-	text-align: left;
-	margin-left: 20px;
-	margin-top: 15px;
-}
-
-
 /* Footer Wrap */
 
 #f {
@@ -154,6 +106,7 @@ a:after {
 
 
 /* MENU CONF*/
+
 
 .menu {
 	position: fixed;

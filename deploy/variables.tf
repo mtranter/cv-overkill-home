@@ -9,13 +9,11 @@ variable "website_files" {
   type = "list"
   default = [
     "index.html",
-    "scripts/app-bundle.js",
-    "scripts/require.js",
-    "scripts/text.js",
-    "scripts/vendor-bundle.js",
+    "config.js",
+    "dist/app-build.js",
+    "dist/aurelia.js",
     "assets/css/bootstrap.css",
     "assets/css/main.css",
-    "assets/css/font-awesome.min.css",
     "assets/img/header-bg.jpg"
   ]
 }

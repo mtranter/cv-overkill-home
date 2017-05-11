@@ -13,7 +13,7 @@
 
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
@@ -27,13 +27,19 @@
     <![endif]-->
   </head>
 
-  <body data-spy="scroll" data-offset="0" data-target="#theMenu" aurelia-app="main">
+  <body data-spy="scroll" aurelia-app="main">
 
 
 
 
-  <script src="scripts/vendor-bundle.js" data-main="aurelia-bootstrapper"></script>
-  <script src="experience/bundle-cfg.js"></script>
-  <script src="profile/bundle-cfg.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.46/system.js"></script>
+    <script src="config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.4.1/bluebird.min.js"></script>
+    <script src="experience/app-bundle.js"></script>
+    <script src="profile/app-bundle.js"></script>
+    <script>
+      System.import('aurelia-bootstrapper');
+    </script>
+
 </body>
 </html>
