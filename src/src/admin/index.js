@@ -9,9 +9,9 @@ export class Index {
     this.router = router;
     config.title = 'Admin';
     let routes = [
-      { route: ['admin', 'admin/home'],       name: 'admin-home',       moduleId: 'admin/home/index' }
+      { route: ['', 'home'],       name: 'admin-home',       moduleId: 'admin/home/index' }
     ].concat(this.pluginRoutes);
 
-    config.map(this.routes);
+    config.map(routes);
   }
 }
