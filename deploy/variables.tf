@@ -14,7 +14,6 @@ variable "website_files" {
     "dist/aurelia.js",
     "dist/vendor.js",
     "assets/css/bootstrap.css",
-    "assets/css/main.css",
     "dist/aws-sdk-2.50.0.min.js"
   ]
 }
