@@ -25,6 +25,12 @@ gulp.task('build-system', function() {
     .pipe(gulp.dest(paths.output));
 });
 
+gulp.task('build-assets-lib', function() {
+  return gulp.src(`${paths.assets}js/**/aws-sdk-2.50.0.min.js`)
+    .pipe(changed(paths.output, {extension: '.*'}))
+    .pipe(gulp.dest(paths.output));
+});
+
 // copies changed html files to the output directory
 gulp.task('build-html', function() {
   return gulp.src(paths.html)
@@ -48,7 +54,7 @@ gulp.task('build-css', function() {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'build-css'],
+    ['build-system', 'build-html', 'build-css','build-assets-lib'],
     callback
   );
 });

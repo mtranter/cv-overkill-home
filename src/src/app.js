@@ -1,8 +1,10 @@
 import {All, inject} from 'aurelia-framework';
+import aws from 'AWS'
 
 @inject(All.of('plugin.route'))
 export class App {
   constructor(routes) {
+    console.log(aws);
     this.message = 'Hello World!';
     this.pluginRoutes = routes
   }

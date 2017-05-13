@@ -12,9 +12,10 @@ variable "website_files" {
     "config.js",
     "dist/app-build.js",
     "dist/aurelia.js",
+    "dist/vendor.js",
     "assets/css/bootstrap.css",
     "assets/css/main.css",
-    "assets/img/header-bg.jpg"
+    "dist/aws-sdk-2.50.0.min.js"
   ]
 }
 

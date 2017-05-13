@@ -6,7 +6,14 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+  meta: {
+    "AWS": {
+      "exports": "AWS",
+      "format": "global"
+    }
+  },
   map: {
+    "AWS": "aws-sdk-2.50.0.min.js",
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.1",
@@ -201,19 +208,38 @@ System.config({
     }
   },
   depCache: {
+    "github:cferdinandi/smooth-scroll@11.0.2.js": [
+      "github:cferdinandi/smooth-scroll@11.0.2/dist/js/smooth-scroll.min.js"
+    ],
+    "npm:jquery@2.2.4.js": [
+      "npm:jquery@2.2.4/dist/jquery.js"
+    ],
+    "github:github/fetch@1.0.0.js": [
+      "github:github/fetch@1.0.0/fetch.js"
+    ],
+    "github:twbs/bootstrap@3.3.7.js": [
+      "github:twbs/bootstrap@3.3.7/js/bootstrap.js"
+    ],
+    "github:twbs/bootstrap@3.3.7/js/bootstrap.js": [
+      "jquery"
+    ],
     "app.js": [
-      "aurelia-framework"
+      "aurelia-framework",
+      "AWS"
     ],
     "home/home-widgets-service.js": [
-      "aurelia-framework"
+      "aurelia-framework",
+      "AWS"
     ],
     "home/index.js": [
       "aurelia-framework",
       "./home-widgets-service",
-      "cferdinandi/smooth-scroll"
+      "cferdinandi/smooth-scroll",
+      "AWS"
     ],
     "main.js": [
-      "./environment"
+      "./environment",
+      "AWS"
     ],
     "resources/elements/menu/menu.js": [
       "aurelia-framework",
@@ -221,6 +247,17 @@ System.config({
     ]
   },
   bundles: {
+    "vendor.js": [
+      "github:cferdinandi/smooth-scroll@11.0.2.js",
+      "github:cferdinandi/smooth-scroll@11.0.2/dist/js/smooth-scroll.min.js",
+      "github:github/fetch@1.0.0.js",
+      "github:github/fetch@1.0.0/fetch.js",
+      "github:twbs/bootstrap@3.3.7.js",
+      "github:twbs/bootstrap@3.3.7/css/bootstrap.css!github:systemjs/plugin-text@0.0.8.js",
+      "github:twbs/bootstrap@3.3.7/js/bootstrap.js",
+      "npm:jquery@2.2.4.js",
+      "npm:jquery@2.2.4/dist/jquery.js"
+    ],
     "app-build.js": [
       "app.html!github:systemjs/plugin-text@0.0.8.js",
       "app.js",
@@ -234,13 +271,6 @@ System.config({
       "resources/index.js"
     ],
     "aurelia.js": [
-      "github:cferdinandi/smooth-scroll@11.0.2.js",
-      "github:cferdinandi/smooth-scroll@11.0.2/dist/js/smooth-scroll.min.js",
-      "github:github/fetch@1.0.0.js",
-      "github:github/fetch@1.0.0/fetch.js",
-      "github:twbs/bootstrap@3.3.7.js",
-      "github:twbs/bootstrap@3.3.7/css/bootstrap.css!github:systemjs/plugin-text@0.0.8.js",
-      "github:twbs/bootstrap@3.3.7/js/bootstrap.js",
       "npm:aurelia-animator-css@1.0.1.js",
       "npm:aurelia-animator-css@1.0.1/aurelia-animator-css.js",
       "npm:aurelia-binding@1.0.9.js",
@@ -323,9 +353,7 @@ System.config({
       "npm:aurelia-templating-router@1.0.0/route-loader.js",
       "npm:aurelia-templating-router@1.0.0/router-view.js",
       "npm:aurelia-templating@1.1.1.js",
-      "npm:aurelia-templating@1.1.1/aurelia-templating.js",
-      "npm:jquery@2.2.4.js",
-      "npm:jquery@2.2.4/dist/jquery.js"
+      "npm:aurelia-templating@1.1.1/aurelia-templating.js"
     ]
   }
 });

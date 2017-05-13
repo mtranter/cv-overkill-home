@@ -14,9 +14,10 @@ module.exports = function(config) {
     jspm: {
       // Edit this to your needs
       loadFiles: ['test/unit/setup.js', 'test/unit/**/*.js'],
-      serveFiles: ['src/**/*.*'],
+      serveFiles: ['src/**/*.*', 'assets/js/*.js'],
       paths: {
         '*': 'src/*',
+        'aws-sdk-2.50.0.min.js': 'assets/js/aws-sdk-2.50.0.min.js',
         'test/*': 'test/*',
         'github:*': 'jspm_packages/github/*',
         'npm:*': 'jspm_packages/npm/*'

@@ -1,4 +1,5 @@
 import environment from './environment';
+import AWS from 'AWS'
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
 Promise.config({
@@ -7,6 +8,10 @@ Promise.config({
   }
 });
 
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  IdentityPoolId: 'eu-west-1:ed8b4abf-c3e3-4497-a27d-dfa3c548287c'
+});
+AWS.config.region = 'eu-west-1';
 
 
 export function configure(aurelia) {
