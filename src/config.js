@@ -223,9 +223,11 @@ System.config({
     "github:twbs/bootstrap@3.3.7/js/bootstrap.js": [
       "jquery"
     ],
+    "admin/index.js": [
+      "aurelia-framework"
+    ],
     "app.js": [
-      "aurelia-framework",
-      "AWS"
+      "aurelia-framework"
     ],
     "home/home-widgets-service.js": [
       "aurelia-framework",
@@ -259,6 +261,12 @@ System.config({
       "npm:jquery@2.2.4/dist/jquery.js"
     ],
     "app-build.js": [
+      "admin/admin.css!github:systemjs/plugin-text@0.0.8.js",
+      "admin/home/index.html!github:systemjs/plugin-text@0.0.8.js",
+      "admin/home/index.js",
+      "admin/index.html!github:systemjs/plugin-text@0.0.8.js",
+      "admin/index.js",
+      "admin/nav-menu.html!github:systemjs/plugin-text@0.0.8.js",
       "app.html!github:systemjs/plugin-text@0.0.8.js",
       "app.js",
       "environment.js",
