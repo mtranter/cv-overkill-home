@@ -263,6 +263,7 @@ System.config({
       "app.js",
       "environment.js",
       "home/home-widgets-service.js",
+      "home/home.css!github:systemjs/plugin-text@0.0.8.js",
       "home/index.html!github:systemjs/plugin-text@0.0.8.js",
       "home/index.js",
       "main.js",
