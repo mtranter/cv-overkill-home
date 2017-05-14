@@ -12,7 +12,8 @@ export class App {
     let routes = [
       { route: ['', 'home'],       name: 'home',       moduleId: 'home/index' },
       { route: ['admin'],       name: 'admin',       moduleId: 'admin/index' },
-      { route: ['login'],       name: 'login',       moduleId: 'login/login' }
+      { route: ['login'],       name: 'login',       moduleId: 'login/login' },
+      { route: ['auth/facebook'],       name: 'facebook-login',       redirect: 'login/login' }
     ].concat(this.pluginRoutes);
 
     config.map(routes);

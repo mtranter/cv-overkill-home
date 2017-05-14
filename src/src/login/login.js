@@ -22,4 +22,7 @@ export class Login{
             AWS.config.credentials.expired = true;
         });
     }
+    activate(params){
+      console.log(params);
+    }
 }
