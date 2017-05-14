@@ -1,9 +1,8 @@
 import {All, inject} from 'aurelia-framework';
-@inject(All.of('plugin.route'), FetchConfig)
+@inject(All.of('plugin.route'))
 export class App {
   constructor(routes, fetchCfg) {
     this.pluginRoutes = routes;
-    this.fetchCfg = fetchCfg;
   }
   configureRouter(config, router) {
     this.router = router;
@@ -17,7 +16,4 @@ export class App {
 
     config.map(routes);
   }
-  activate(){
-     this.fetchCfg.configure();
-   }
 }
