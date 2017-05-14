@@ -27,7 +27,6 @@ System.config({
       "admin/nav-menu.html!github:systemjs/plugin-text@0.0.8.js",
       "app.html!github:systemjs/plugin-text@0.0.8.js",
       "app.js",
-      "auth-config.js",
       "environment.js",
       "home/home-widgets-service.js",
       "home/home.css!github:systemjs/plugin-text@0.0.8.js",

@@ -1,6 +1,5 @@
 import environment from './environment';
 import AWS from 'AWS'
-import config from './auth-config';
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
 Promise.config({
