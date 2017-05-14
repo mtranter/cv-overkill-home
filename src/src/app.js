@@ -1,5 +1,4 @@
 import {All, inject} from 'aurelia-framework';
-import {FetchConfig} from 'aurelia-auth';
 @inject(All.of('plugin.route'), FetchConfig)
 export class App {
   constructor(routes, fetchCfg) {

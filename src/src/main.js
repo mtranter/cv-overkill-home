@@ -19,9 +19,6 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .feature('resources')
-    .plugin('aurelia-auth', (baseConfig)=>{
-         baseConfig.configure(config);
-    })
     .plugin({moduleId: 'experience/plugin', resourcesRelativeTo:['experience',''], config:{}} )
     .plugin({moduleId: 'profile/plugin', resourcesRelativeTo:['profile',''], config:{}});
 
