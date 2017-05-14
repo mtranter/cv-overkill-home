@@ -34,7 +34,6 @@ module.exports = {
     "dist/aurelia": {
       "includes": [
         "aurelia-framework",
-        "aurelia-auth",
         "aurelia-bootstrapper",
         "aurelia-fetch-client",
         "aurelia-router",
