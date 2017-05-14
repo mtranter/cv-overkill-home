@@ -1,5 +1,6 @@
 import environment from './environment';
 import AWS from 'AWS'
+import config from './auth-config';
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
 Promise.config({
@@ -19,6 +20,9 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .feature('resources')
+    .plugin('aurelia-auth', (baseConfig)=>{
+         baseConfig.configure(config);
+    })
     .plugin({moduleId: 'experience/plugin', resourcesRelativeTo:['experience',''], config:{}} )
     .plugin({moduleId: 'profile/plugin', resourcesRelativeTo:['profile',''], config:{}});
 

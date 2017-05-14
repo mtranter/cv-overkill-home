@@ -10,6 +10,7 @@ variable "website_files" {
   default = [
     "index.html",
     "config.js",
+    "aurelia-auth.js",
     "dist/app-build.js",
     "dist/aurelia.js",
     "dist/vendor.js",

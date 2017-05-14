@@ -1,9 +1,10 @@
 import {All, inject} from 'aurelia-framework';
-
-@inject(All.of('plugin.route'))
+import {FetchConfig} from 'aurelia-auth';
+@inject(All.of('plugin.route'), FetchConfig)
 export class App {
-  constructor(routes) {
-    this.pluginRoutes = routes
+  constructor(routes, fetchCfg) {
+    this.pluginRoutes = routes;
+    this.fetchCfg = fetchCfg;
   }
   configureRouter(config, router) {
     this.router = router;
@@ -15,4 +16,7 @@ export class App {
 
     config.map(routes);
   }
+  activate(){
+     this.fetchConfig.configure();
+   }
 }
