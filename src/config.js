@@ -229,6 +229,10 @@ System.config({
     "app.js": [
       "aurelia-framework"
     ],
+    "auth/auth-service.js": [
+      "./auth-config",
+      "AWS"
+    ],
     "home/home-widgets-service.js": [
       "aurelia-framework",
       "AWS"
@@ -241,9 +245,7 @@ System.config({
     ],
     "login/login.js": [
       "aurelia-framework",
-      "aurelia-fetch-client",
-      "aurelia-pal-browser",
-      "AWS"
+      "./../auth/auth-service"
     ],
     "main.js": [
       "./environment",
@@ -275,6 +277,8 @@ System.config({
       "admin/nav-menu.html!github:systemjs/plugin-text@0.0.8.js",
       "app.html!github:systemjs/plugin-text@0.0.8.js",
       "app.js",
+      "auth/auth-config.js",
+      "auth/auth-service.js",
       "environment.js",
       "home/home-widgets-service.js",
       "home/home.css!github:systemjs/plugin-text@0.0.8.js",

@@ -1,28 +1,16 @@
 import {inject} from 'aurelia-framework';
-import {HttpClient} from 'aurelia-fetch-client';
-import {PLATFORM} from 'aurelia-pal'
-import AWS from 'AWS';
+import {AuthService} from './../auth/auth-service';
 
-@inject(HttpClient)
+
+@inject(AuthService)
 export class Login{
-    constructor(http){
-        this.http = http;
+    constructor(auth){
+        this.auth = auth;
     };
 
     heading = 'Login';
 
     authenticate(name){
-        return this.http.fetch(`https://www.facebook.com/v2.9/dialog/oauth?
-  client_id=1078560385532336
-  &redirect_uri=${PLATFORM.location.origin + '/auth/facebook'}`)
-        .then((response)=>{
-            console.log("auth response " + response);
-            AWS.config.credentials.params.Logins['graph.facebook.com'] = response;
-            AWS.config.credentials.params.Logins = {};
-            AWS.config.credentials.expired = true;
-        });
-    }
-    activate(params){
-      console.log(params);
+        return this.auth.authorize(name);
     }
 }
