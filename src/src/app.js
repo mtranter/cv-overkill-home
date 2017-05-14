@@ -11,7 +11,8 @@ export class App {
     config.title = 'Aurelia';
     let routes = [
       { route: ['', 'home'],       name: 'home',       moduleId: 'home/index' },
-      { route: ['admin'],       name: 'admin',       moduleId: 'admin/index' }
+      { route: ['admin'],       name: 'admin',       moduleId: 'admin/index' },
+      { route: ['login'],       name: 'login',       moduleId: 'login/login' }
     ].concat(this.pluginRoutes);
 
     config.map(routes);
