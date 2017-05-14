@@ -17,6 +17,6 @@ export class App {
     config.map(routes);
   }
   activate(){
-     this.fetchConfig.configure();
+     this.fetchCfg.configure();
    }
 }
