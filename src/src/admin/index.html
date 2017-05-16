@@ -16,8 +16,8 @@
         <div class="navbar-default sidebar" role="navigation">
                   <div class="sidebar-nav navbar-collapse">
                       <ul class="nav in" id="side-menu">
-                        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                            <a href.bind="row.href" class="active"><i class="fa ${row.settings.icon} fa-fw"></i> ${row.title}</a>
+                        <li repeat.for="row of router.navigation" >
+                            <a href.bind="row.href" class="${row.isActive ? 'active' : ''}"><i class="fa ${row.settings.icon} fa-fw"></i> ${row.title}</a>
                         </li>
 
                           <li>
