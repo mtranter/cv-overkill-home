@@ -1,5 +1,6 @@
 <template>
   <require from="./home.css" as="scoped"></require>
+  <div id="cv-wrapper">
   <menu></menu>
   <section id="home"></section>
   <div repeat.for="widget of widgets">
@@ -7,5 +8,5 @@
            view.bind="widget.view"></compose>
    </div>
 
-
+</div>
 </template>

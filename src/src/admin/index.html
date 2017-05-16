@@ -1,4 +1,37 @@
 <template>
   <require from="./admin.css" as="scoped"></require>
-  <router-view></router-view>
+  <div id="admin-wrapper">
+
+    <div id="wrapper">
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Admin</a>
+        </div>
+        <div class="navbar-default sidebar" role="navigation">
+                  <div class="sidebar-nav navbar-collapse">
+                      <ul class="nav in" id="side-menu">
+                        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                            <a href.bind="row.href" class="active"><i class="fa ${row.settings.icon} fa-fw"></i> ${row.title}</a>
+                        </li>
+
+                          <li>
+                              <a href="#/home"><i class="fa fa-bullseye fa-fw"></i> CV</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <!-- /.sidebar-collapse -->
+              </div>
+      </nav>
+      <div id="page-wrapper">
+
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
 </template>
