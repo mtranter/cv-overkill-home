@@ -25,7 +25,7 @@ export function configure(aurelia) {
     .feature('resources');
 
 
-  if(!PLATFORM.location.origin.indexOf('http://localhost') === -1){
+  if(PLATFORM.location.origin.indexOf('http://localhost') === -1){
     cfg
     .plugin({moduleId: 'experience/plugin', resourcesRelativeTo:['experience',''], config:{}} )
     .plugin({moduleId: 'profile/plugin', resourcesRelativeTo:['profile',''], config:{}});
