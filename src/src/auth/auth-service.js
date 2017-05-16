@@ -40,7 +40,7 @@ export class AuthService {
   authorize(provider){
     return new Promise((resolve,reject) => {
       let cfg = {
-        url: `https://marktranter.eu.auth0.com/authorize?scope=openid%20name%20email%20nickname&client_id=k0BkgOePRLeWAr4PoIur8mz0TknuoVQr&response_type=token&connection=${provider}&prompt=consent&redirect_uri=http://www.marktranter.com`,
+        url: `https://marktranter.eu.auth0.com/authorize?scope=openid%20name%20email%20nickname&client_id=k0BkgOePRLeWAr4PoIur8mz0TknuoVQr&response_type=token&connection=${provider}&prompt=consent&redirect_uri=${window.location.origin}`,
         popupOptions: {
           width:320,
           height:620
@@ -66,7 +66,7 @@ export class AuthService {
                 let profilePromise = this.http.fetch('https://marktranter.eu.auth0.com/userinfo', {headers: headers})
                   .then(r => r.json())
                   .then(d => this.storage.set('user.profile',d));
-                return Promise.all([rolePromise, profilePromise]);
+                return Promise.all([rolePromise, profilePromise]).then(resolve);
               }
             }
         } catch(e) {
@@ -75,6 +75,40 @@ export class AuthService {
     });
   }
   getUserProfile() {
-
+    return this.storage.get('user.profile')
   }
+  isAuthenticated() {
+    let token = this.storage.get('auth.jwt');
+
+    // There's no token, so user is not authenticated.
+    if (!token) {
+      return false;
+    }
+
+    // There is a token, but in a different format. Return true.
+    if (token.split('.').length !== 3) {
+      return true;
+    }
+
+    let exp;
+    try {
+      let base64Url = token.split('.')[1];
+      let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      exp = JSON.parse(window.atob(base64)).exp;
+    } catch (error) {
+      return false;
+    }
+
+    if (exp) {
+      return Math.round(new Date().getTime() / 1000) <= exp;
+    }
+
+    return true;
+  }
+  setInitialUrl(url) {
+    this.initialUrl = url;
+  }
+  getLoginRedirect() {
+   return this.initialUrl || '#/home';
+ }
 }

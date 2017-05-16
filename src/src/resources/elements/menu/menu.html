@@ -1,10 +1,12 @@
 <template>
+  <require from="./menu.css" as="scoped"></require>
   <nav id="theMenu" class="menu ${showMenu ? 'menu-open' : ''}">
     <div class="menu-wrap">
       <h1 class="logo"><a href="index.html#home">Mark Tranter</a></h1>
       <i click.delegate="toggleMenu()" class="fa fa-remove menu-close"></i>
       <a href="#home" data-scroll>Home</a>
       <a data-scroll repeat.for="widget of widgets" href.bind="widget.href" >${widget.title}</a>
+      <a href="#admin" data-scroll>Admin</a>
       <a href="#"><i class="fa fa-facebook"></i></a>
       <a href="#"><i class="fa fa-twitter"></i></a>
       <a href="#"><i class="fa fa-dribbble"></i></a>
