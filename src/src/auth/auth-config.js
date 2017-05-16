@@ -52,7 +52,7 @@ export default {
       display: 'popup',
       type: '2.0',
       popupOptions: { width: 580, height: 400 },
-      awsProviderId: 'graph.facebook.com'
+      providerId: 'graph.facebook.com'
     },
     linkedin: {
       name: 'linkedin',
