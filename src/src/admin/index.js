@@ -10,8 +10,7 @@ export class Index {
     config.title = 'Admin';
     let routes = [
       { route: ['', 'home'],       name: 'admin-home',       moduleId: 'admin/home/index', title: 'Admin Home', nav: true, settings:{icon:'fa-dashboard'} }
-    ];
-    routes.concat(this.pluginRoutes);
+    ].concat(this.pluginRoutes);
 
     config.map(routes);
   }
