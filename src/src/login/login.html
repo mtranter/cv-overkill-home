@@ -1,8 +1,18 @@
 <template>
-  <button class="btn btn-block btn-github" click.delegate="authenticate('github')">
-          <i class="fa fa-github">Sign in with Github
-</button>
-<button class="btn btn-block btn-github" click.delegate="authenticate('linkedin')">
-        <i class="fa fa-linkedin">Sign in with Linkedin
-</button>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <button class="btn btn-block btn-github" click.delegate="authenticate('github')">
+        <i class="fa fa-github"></i> Sign in with Github
+      </button>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <button class="btn btn-block btn-github" click.delegate="authenticate('linkedin')">
+      <i class="fa fa-linkedin"></i> Sign in with Linkedin
+    </button>
+  </div>
+</div>
+
 </template>

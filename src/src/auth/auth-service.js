@@ -1,8 +1,10 @@
 import {inject} from 'aurelia-framework'
-import config from './auth-config'
+import {HttpClient} from 'aurelia-fetch-client'
 import {AwsRoleManager} from './aws/aws-role-manager'
 import AWS from 'AWS';
+import {Storage} from './../common/storage'
 const token_regex = new RegExp("[\?&#]id_token=([^&]*)");
+const access_regex = new RegExp("[\?&#]access_token=([^&]*)");
 
 //Internal class. Mock in tests
 class BrowerPopup {
@@ -27,16 +29,17 @@ export class PopupFactory {
   }
 }
 
-@inject(AwsRoleManager, PopupFactory)
+@inject(AwsRoleManager, PopupFactory, Storage, HttpClient)
 export class AuthService {
-  constructor(roleManager, popupFactory){
+  constructor(roleManager, popupFactory, storage, http){
     this.roleManager = roleManager;
     this.popupFactory = popupFactory;
+    this.storage = storage;
+    this.http = http;
   }
   authorize(provider){
     return new Promise((resolve,reject) => {
       let cfg = {
-              //https://marktranter.eu.auth0.com/authorize?scope=openid%20name%20email%20nickname&response_type=token&state=my-custom-state&sso=false&connection=github&client_id=k0BkgOePRLeWAr4PoIur8mz0TknuoVQr&redirect_uri=https%3A%2F%2Fmarktranter.eu.webtask.io%2Fauth0-authentication-api-debugger&auth0Client=eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiNi44LjQifQ
         url: `https://marktranter.eu.auth0.com/authorize?scope=openid%20name%20email%20nickname&client_id=k0BkgOePRLeWAr4PoIur8mz0TknuoVQr&response_type=token&connection=${provider}&prompt=consent&redirect_uri=http://www.marktranter.com`,
         popupOptions: {
           width:320,
@@ -50,17 +53,28 @@ export class AuthService {
             if (win.url.indexOf(window.location.origin) != -1) {
               window.clearInterval(pollTimer);
               let results = token_regex.exec(win.url);
+              let access = access_regex.exec(win.url);
               win.close();
               if( results == null ){
                 reject(`No auth token supplied in callback from ${provider}`)
               }
               else{
-                return this.roleManager.setToken('marktranter.eu.auth0.com', results[1])
+                this.storage.set('auth.jwt', results[1]);
+                let rolePromise = this.roleManager.setToken('marktranter.eu.auth0.com', results[1]);
+                var headers = new Headers();
+                headers.append('Authorization', `Bearer ${access[1]}`);
+                let profilePromise = this.http.fetch('https://marktranter.eu.auth0.com/userinfo', {headers: headers})
+                  .then(r => r.json())
+                  .then(d => this.storage.set('user.profile',d));
+                return Promise.all([rolePromise, profilePromise]);
               }
             }
         } catch(e) {
         }
       }, 100);
     });
+  }
+  getUserProfile() {
+
   }
 }
