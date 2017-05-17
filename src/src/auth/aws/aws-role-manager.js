@@ -1,4 +1,8 @@
+
 import AWS from 'AWS'
+import {PLATFORM} from 'aurelia-pal'
+import {inject} from 'aurelia-framework'
+import {Storage} from './../../common/storage'
 
 const ROLE_MAP = {
   "Anon": "arn:aws:iam::277618971297:role/cv_overkill_unauth_role",
@@ -54,8 +58,34 @@ function setRole(index){
   });
 }
 
-
+@inject(Storage)
 export class AwsRoleManager {
+  static initialize(){
+    // aws.cognito.identity-id.eu-west-1:ed8b4abf-c3e3-4497-a27d-dfa3c548287c
+    return new Promise((resolve, reject) => {
+      let storage = new Storage();
+      let creds = storage.get('aws.credentials');
+      if(creds){
+        AWS.config.credentials = new AWS.Credentials(creds);
+        AWS.config.credentials.refresh(() => {
+          if(AWS.config.credentials.expired){
+              storage.remove('aws.credentials');
+              resolve(AwsRoleManager.initialize());
+          }else {
+            resolve();
+          }
+        });
+      } else {
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+          IdentityPoolId: 'eu-west-1:ed8b4abf-c3e3-4497-a27d-dfa3c548287c'
+        });
+        resolve();
+      }
+    })
+  }
+  constructor(storage){
+    this.storage = storage;
+  }
   setToken(provider, token){
       AWS.config.credentials.params.Logins = {};
       AWS.config.credentials.params.Logins[provider] = token;
@@ -63,11 +93,19 @@ export class AwsRoleManager {
       return new Promise((resolve,reject) => {
         AWS.config.credentials.refresh(() => {
           return setRole().then(creds => {
-            AWS.config.credentials = new AWS.Credentials(creds.Credentials);
+            let credsOps = {
+              accessKeyId: creds.Credentials.AccessKeyId,
+              secretAccessKey:creds.Credentials.SecretAccessKey,
+              sessionToken: creds.Credentials.SessionToken
+            };
+            this.storage.set('aws.credentials',credsOps);
+            AWS.config.credentials = new AWS.Credentials(creds.Credentials.AccessKeyId, creds.Credentials.SecretAccessKey, creds.Credentials.SessionToken);
             AWS.config.credentials.refresh(resolve);
           });
-        })
-      })
-
+        });
+      });
+  }
+  isAuthenticated() {
+    return (!!AWS.config.credentials) && (!AWS.config.credentials.expired)
   }
 }

@@ -78,6 +78,10 @@ export class AuthService {
     return this.storage.get('user.profile')
   }
   isAuthenticated() {
+    if(!this.roleManager.isAuthenticated()){
+      return false;
+    }
+
     let token = this.storage.get('auth.jwt');
 
     // There's no token, so user is not authenticated.
