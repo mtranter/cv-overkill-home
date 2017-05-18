@@ -67,8 +67,8 @@ export class AwsRoleManager {
       let creds = storage.get('aws.credentials');
       if(creds){
         AWS.config.credentials = new AWS.Credentials(creds);
-        AWS.config.credentials.refresh(() => {
-          if(AWS.config.credentials.expired){
+        AWS.config.credentials.refresh((err) => {
+          if(err){
               storage.remove('aws.credentials');
               resolve(AwsRoleManager.initialize());
           }else {
@@ -99,7 +99,7 @@ export class AwsRoleManager {
               sessionToken: creds.Credentials.SessionToken
             };
             this.storage.set('aws.credentials',credsOps);
-            AWS.config.credentials = new AWS.Credentials(creds.Credentials.AccessKeyId, creds.Credentials.SecretAccessKey, creds.Credentials.SessionToken);
+            AWS.config.credentials = new AWS.Credentials(credsOps);
             AWS.config.credentials.refresh(resolve);
           });
         });

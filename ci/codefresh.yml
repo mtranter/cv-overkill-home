@@ -2,7 +2,7 @@ version: '1.0'
 steps:
   aurelia_build:
     image: mtranter/ui-module-build:latest
-    working_directory: ./src
+    working_directory: ./app
     description: Build Aurelia App
     commands:
       - npm install

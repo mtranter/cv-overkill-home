@@ -2,7 +2,7 @@ variable "region" {
   default = "eu-west-1"
 }
 variable "relative_source_path" {
-  default = "/../src/"
+  default = "/../app/"
 }
 
 variable "website_files" {
