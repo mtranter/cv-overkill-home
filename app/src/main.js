@@ -38,5 +38,7 @@ export function configure(aurelia) {
     aurelia.use.plugin('aurelia-testing');
   }
   AwsRoleManager.initialize().then(() =>
-  aurelia.start().then(() => aurelia.setRoot()));
+  aurelia.start().then(() => {
+    aurelia.setRoot()
+  }));
 }

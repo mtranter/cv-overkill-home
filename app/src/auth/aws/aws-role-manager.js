@@ -63,22 +63,18 @@ export class AwsRoleManager {
   static initialize(){
     // aws.cognito.identity-id.eu-west-1:ed8b4abf-c3e3-4497-a27d-dfa3c548287c
     return new Promise((resolve, reject) => {
+      AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'eu-west-1:ed8b4abf-c3e3-4497-a27d-dfa3c548287c'
+      });
       let storage = new Storage();
-      let creds = storage.get('aws.credentials');
+      let creds = storage.get('cognito.logins');
       if(creds){
-        AWS.config.credentials = new AWS.Credentials(creds);
-        AWS.config.credentials.refresh((err) => {
-          if(err){
-              storage.remove('aws.credentials');
-              resolve(AwsRoleManager.initialize());
-          }else {
-            resolve();
-          }
+        AWS.config.credentials.params.Logins = creds;
+        AWS.config.credentials.expired = true;
+        AWS.config.credentials.refresh(() => {
+          resolve(setRole());
         });
       } else {
-        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-          IdentityPoolId: 'eu-west-1:ed8b4abf-c3e3-4497-a27d-dfa3c548287c'
-        });
         resolve();
       }
     })
@@ -90,18 +86,10 @@ export class AwsRoleManager {
       AWS.config.credentials.params.Logins = {};
       AWS.config.credentials.params.Logins[provider] = token;
       AWS.config.credentials.expired = true;
+      this.storage.set('cognito.logins', AWS.config.credentials.params.Logins);
       return new Promise((resolve,reject) => {
         AWS.config.credentials.refresh(() => {
-          return setRole().then(creds => {
-            let credsOps = {
-              accessKeyId: creds.Credentials.AccessKeyId,
-              secretAccessKey:creds.Credentials.SecretAccessKey,
-              sessionToken: creds.Credentials.SessionToken
-            };
-            this.storage.set('aws.credentials',credsOps);
-            AWS.config.credentials = new AWS.Credentials(credsOps);
-            AWS.config.credentials.refresh(resolve);
-          });
+          resolve(setRole());
         });
       });
   }
