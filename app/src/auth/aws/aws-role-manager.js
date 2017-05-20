@@ -96,7 +96,7 @@ export class AwsRoleManager {
   setToken(provider, token){
     let creds = {};
     creds[provider] = token;
-    AwsRoleManager.initialize(creds);
+    return AwsRoleManager.initialize(creds);
   }
   isAuthenticated() {
     return (!!AWS.config.credentials) && (!AWS.config.credentials.expired)
