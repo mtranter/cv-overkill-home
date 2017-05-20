@@ -45,8 +45,12 @@ function setRole(index){
           RoleArn: targetAwsRole,
           RoleSessionName: ROLE_HIERARCHY[index]
         }, (e,t) => {
+          console.log(`In role ${targetAwsRole}`)
           if(e) resolve(setRole(index + 1));
-          else resolve(t);
+          else {
+            AWS.config.credentials = new AWS.Credentials(t.Credentials.AccessKeyId, t.Credentials.SecretAccessKey, t.Credentials.SessionToken);
+            resolve();
+          }
         })
       }).catch(e => {
         console.log(e);
@@ -60,19 +64,26 @@ function setRole(index){
 
 @inject(Storage)
 export class AwsRoleManager {
-  static initialize(){
+  static initialize(creds){
     // aws.cognito.identity-id.eu-west-1:ed8b4abf-c3e3-4497-a27d-dfa3c548287c
     return new Promise((resolve, reject) => {
       AWS.config.credentials = new AWS.CognitoIdentityCredentials({
         IdentityPoolId: 'eu-west-1:ed8b4abf-c3e3-4497-a27d-dfa3c548287c'
       });
       let storage = new Storage();
-      let creds = storage.get('cognito.logins');
+      if(!creds){
+        creds = storage.get('cognito.logins');
+      }
       if(creds){
         AWS.config.credentials.params.Logins = creds;
         AWS.config.credentials.expired = true;
-        AWS.config.credentials.refresh(() => {
-          resolve(setRole());
+        AWS.config.credentials.refresh((e) => {
+          if(e) {
+            storage.remove('cognito.logins');
+            resolve(AwsRoleManager.initialize())
+          } else {
+            resolve(setRole());
+          }
         });
       } else {
         resolve();
@@ -83,15 +94,9 @@ export class AwsRoleManager {
     this.storage = storage;
   }
   setToken(provider, token){
-      AWS.config.credentials.params.Logins = {};
-      AWS.config.credentials.params.Logins[provider] = token;
-      AWS.config.credentials.expired = true;
-      this.storage.set('cognito.logins', AWS.config.credentials.params.Logins);
-      return new Promise((resolve,reject) => {
-        AWS.config.credentials.refresh(() => {
-          resolve(setRole());
-        });
-      });
+    let creds = {};
+    creds[provider] = token;
+    AwsRoleManager.initialize(creds);
   }
   isAuthenticated() {
     return (!!AWS.config.credentials) && (!AWS.config.credentials.expired)

@@ -1,5 +1,5 @@
 set -e
-cd src
+cd app
 gulp test
 gulp bundle
 cd ./../deploy
