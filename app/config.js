@@ -31,6 +31,7 @@ System.config({
     "auth0-lock": "npm:auth0-lock@10.16.0",
     "bluebird": "npm:bluebird@3.4.1",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
+    "bootstrap-datepicker": "npm:bootstrap-datepicker@1.6.4",
     "cferdinandi/smooth-scroll": "github:cferdinandi/smooth-scroll@11.0.2",
     "fetch": "github:github/fetch@1.0.0",
     "font-awesome": "npm:font-awesome@4.6.3",
@@ -227,6 +228,11 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:bluebird@3.4.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:bootstrap-datepicker@1.6.4": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "jquery": "npm:jquery@2.2.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:browserify-zlib@0.1.4": {

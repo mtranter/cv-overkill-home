@@ -13,6 +13,7 @@ variable "website_files" {
     "dist/app-build.js",
     "dist/aurelia.js",
     "dist/vendor.js",
+    "assets/img/waiting.gif",
     "assets/css/bootstrap.css",
     "dist/aws-sdk-2.50.0.min.js"
   ]
@@ -23,6 +24,7 @@ variable "content_type_map" {
     "html"    = "text/html",
     "js"      = "application/javascript",
     "css"     = "text/css",
-    "jpg"     = "image/jpeg"
+    "jpg"     = "image/jpeg",
+    "gif"     = "image/gif"
   }
 }

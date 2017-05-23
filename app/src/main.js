@@ -2,7 +2,7 @@ import environment from './environment';
 import AWS from 'AWS'
 import {initialize} from 'aurelia-pal-browser'
 import {PLATFORM} from 'aurelia-pal'
-import {AwsRoleManager} from './auth/aws/aws-role-manager'
+import {AuthService} from './auth/auth-service'
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
 Promise.config({
@@ -37,7 +37,9 @@ export function configure(aurelia) {
   if (environment.testing) {
     aurelia.use.plugin('aurelia-testing');
   }
-  AwsRoleManager.initialize().then(() =>
+
+
+  AuthService.initialize().then(() =>
   aurelia.start().then(() => {
     aurelia.setRoot()
   }));

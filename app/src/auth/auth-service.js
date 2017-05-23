@@ -3,8 +3,11 @@ import {HttpClient} from 'aurelia-fetch-client'
 import {AwsRoleManager} from './aws/aws-role-manager'
 import AWS from 'AWS';
 import {Storage} from './../common/storage'
+import jwt from './jwt'
+
 const token_regex = new RegExp("[\?&#]id_token=([^&]*)");
 const access_regex = new RegExp("[\?&#]access_token=([^&]*)");
+const token_storage_key = 'auth0.jwt';
 
 //Internal class. Mock in tests
 class BrowerPopup {
@@ -29,8 +32,28 @@ export class PopupFactory {
   }
 }
 
+function parseJwt(token){
+  if (!token.split('.').length !== 3) {
+    throw 'Invalid JWT';
+  }
+
+  let base64Url = token.split('.')[1];
+  let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  return JSON.parse(window.atob(base64));
+}
+
 @inject(AwsRoleManager, PopupFactory, Storage, HttpClient)
 export class AuthService {
+  static initialize() {
+    let storage = new Storage();
+    let authCreds = storage.get(token_storage_key);
+    let creds;
+    if(authCreds && !jwt.tokenExpired(authCreds)) {
+      creds = {}
+      creds['marktranter.eu.auth0.com'] = authCreds;
+    }
+    return AwsRoleManager.initialize(creds);
+  }
   constructor(roleManager, popupFactory, storage, http){
     this.roleManager = roleManager;
     this.popupFactory = popupFactory;
@@ -58,15 +81,9 @@ export class AuthService {
               if( results == null ){
                 reject(`No auth token supplied in callback from ${provider}`)
               }
-              else{
-                this.storage.set('auth.jwt', results[1]);
-                let rolePromise = this.roleManager.setToken('marktranter.eu.auth0.com', results[1]);
-                var headers = new Headers();
-                headers.append('Authorization', `Bearer ${access[1]}`);
-                let profilePromise = this.http.fetch('https://marktranter.eu.auth0.com/userinfo', {headers: headers})
-                  .then(r => r.json())
-                  .then(d => this.storage.set('user.profile',d));
-                return Promise.all([rolePromise, profilePromise]).then(resolve);
+              else {
+                this.storage.set(token_storage_key, results[1]);
+                resolve(this.roleManager.setToken('marktranter.eu.auth0.com', results[1]));
               }
             }
         } catch(e) {
@@ -77,37 +94,26 @@ export class AuthService {
   getUserProfile() {
     return this.storage.get('user.profile')
   }
+  get tokenInterceptor() {
+    let storage = this.storage;
+    let auth = this;
+    return {
+      request(request) {
+        if (auth.isAuthenticated()) {
+          let token = storage.get(token_storage_key);
+          token = `Bearer ${token}`;
+          request.headers.set('Authorization', token);
+        }
+        return request;
+      }
+    };
+  }
   isAuthenticated() {
     if(!this.roleManager.isAuthenticated()){
       return false;
     }
-
-    let token = this.storage.get('auth.jwt');
-
-    // There's no token, so user is not authenticated.
-    if (!token) {
-      return false;
-    }
-
-    // There is a token, but in a different format. Return true.
-    if (token.split('.').length !== 3) {
-      return true;
-    }
-
-    let exp;
-    try {
-      let base64Url = token.split('.')[1];
-      let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      exp = JSON.parse(window.atob(base64)).exp;
-    } catch (error) {
-      return false;
-    }
-
-    if (exp) {
-      return Math.round(new Date().getTime() / 1000) <= exp;
-    }
-
-    return true;
+    let token = this.storage.get(token_storage_key);
+    return token && !jwt.tokenExpired(token);
   }
   setInitialUrl(url) {
     this.initialUrl = url;

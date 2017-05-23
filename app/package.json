@@ -83,6 +83,7 @@
       "auth0-lock": "npm:auth0-lock@^10.16.0",
       "bluebird": "npm:bluebird@3.4.1",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
+      "bootstrap-datepicker": "npm:bootstrap-datepicker@^1.6.4",
       "cferdinandi/smooth-scroll": "github:cferdinandi/smooth-scroll@^11.0.2",
       "fetch": "github:github/fetch@^1.0.0",
       "font-awesome": "npm:font-awesome@4.6.3",
