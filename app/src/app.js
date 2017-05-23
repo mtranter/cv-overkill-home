@@ -1,9 +1,12 @@
 import {All, inject} from 'aurelia-framework';
 import {AuthorizeStep} from './auth/authorize-step'
-@inject(All.of('plugin.route'))
+import {FetchConfig} from './auth/auth-fetch-config';
+
+@inject(All.of('plugin.route'), FetchConfig)
 export class App {
   constructor(routes, fetchCfg) {
     this.pluginRoutes = routes;
+    this.fetchCfg = fetchCfg;
   }
   configureRouter(config, router) {
     this.router = router;
@@ -17,5 +20,8 @@ export class App {
     ].concat(this.pluginRoutes);
 
     config.map(routes);
+  }
+  activate(){
+   this.fetchCfg.configure();
   }
 }
