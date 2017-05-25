@@ -18,7 +18,6 @@ module.exports = {
     },
     "dist/vendor": {
       "includes":[
-        "jquery",
         "bootstrap",
         "bootstrap/css/bootstrap.css!text",
         "fetch",

@@ -10,13 +10,6 @@ System.config({
     "AWS": {
       "exports": "AWS",
       "format": "global"
-    },
-    "jquery": {
-      "exports": "jQuery",
-      "format": "global"
-    },
-    "bootstrap": {
-      deps: ['jquery']
     }
   },
   map: {
