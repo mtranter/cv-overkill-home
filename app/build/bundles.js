@@ -18,10 +18,10 @@ module.exports = {
     },
     "dist/vendor": {
       "includes":[
+        "jquery",
         "bootstrap",
         "bootstrap/css/bootstrap.css!text",
         "fetch",
-        "jquery",
         "cferdinandi/smooth-scroll",
         "bootstrap-datepicker",
         "bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css!text",
