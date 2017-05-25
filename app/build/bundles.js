@@ -23,7 +23,10 @@ module.exports = {
         "fetch",
         "jquery",
         "cferdinandi/smooth-scroll",
-        "bootstrap-datepicker"
+        "bootstrap-datepicker",
+        "bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css!text",
+        "summernote",
+        "summernote/dist/summernote.css!text"
       ],
       "options": {
         "inject": true,
