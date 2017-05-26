@@ -7,7 +7,6 @@ export class App {
   constructor(routes, fetchCfg) {
     this.pluginRoutes = routes;
     this.fetchCfg = fetchCfg;
-    this.markup = 'Hello Cunt'
   }
   configureRouter(config, router) {
     this.router = router;
