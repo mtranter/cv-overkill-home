@@ -9,9 +9,11 @@ let stylesLoaded = false;
 
 @inject(Element)
 export class DatePickerCustomAttribute {
-  format = new Intl.DateTimeFormat(navigator.language);
   constructor(element){
-    $(element).datepicker({format: {
+    this.element = element;
+  }
+  bind(){
+    $(this.element).datepicker({format: {
         toDisplay:  (date, format, language) => {
               return dateFormatter.toView(date);
           },
