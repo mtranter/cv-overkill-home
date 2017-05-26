@@ -12,7 +12,8 @@ export class HtmlEditorCustomElement {
     this.element = element;
   }
   bind(){
-    $(this.element).wysiwyg();
+    let div = this.element.getElementsByTagName('div')[0];
+    $(div).wysiwyg();
   }
   attached(){
     if(!stylesLoaded){
