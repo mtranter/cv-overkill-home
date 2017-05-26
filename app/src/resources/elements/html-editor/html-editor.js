@@ -1,5 +1,5 @@
 import {bindable, bindingMode, inject} from 'aurelia-framework';
-import $ from 'bootstrap'
+import bs from 'bootstrap'
 import summernote from 'summernote'
 import css from 'summernote/dist/summernote.css!text'
 import {DOM} from 'aurelia-pal'
