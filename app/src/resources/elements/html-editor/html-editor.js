@@ -9,9 +9,10 @@ let stylesLoaded = false;
 export class HtmlEditorCustomElement {
   @bindable({ defaultBindingMode: bindingMode.twoWay }) value = ""
   constructor(element){
-    $(element.getElementsByTagName('div')[0]).wysiwyg();
+    this.element = element;
   }
   attached(){
+    $(this.element.getElementsByTagName('div')[0]).wysiwyg();
     if(!stylesLoaded){
       stylesLoaded = true;
       DOM.injectStyles(css);
