@@ -14,10 +14,8 @@ Promise.config({
 
 AWS.config.region = 'eu-west-1';
 
-
 export function configure(aurelia) {
   console.log(aurelia)
-
   initialize();
   let cfg = aurelia.use
     .standardConfiguration()

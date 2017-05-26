@@ -1,33 +1,48 @@
-import {bindable, bindingMode, inject} from 'aurelia-framework';
-import bs from 'bootstrap'
-import summernote from 'summernote'
-import css from 'summernote/dist/summernote.css!text'
-import {DOM} from 'aurelia-pal'
+import {
+    bindable,
+    bindingMode,
+    inlineView,
+    customElement,
+    Container
+} from 'aurelia-framework';
+import Quill from 'quill';
+let defaultConfig = {
+        modules: { toolbar: true },
+        theme: 'snow'
+    };
 
-let stylesLoaded = false;
-let isNodeRegex
+@inlineView(`<template>
+  <require from="quill/dist/quill.snow.css"></require>
+    <div ref="editor"></div>
+</template>`)
+@customElement('html-editor')
+export class HtmlEditor {
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
+    @bindable options; // per instance options
 
-@inject(Element)
-export class HtmlEditorCustomElement {
-  @bindable({ defaultBindingMode: bindingMode.twoWay }) value = ""
-  constructor(element){
-    this.element = element;
-  }
-  bind(){
-    let div = this.element.getElementsByTagName('div')[0];
-    $(div).summernote({
-      callbacks: {
-        onChange: (contents, $editable) => {
-          this.value = contents;
-        }
-      }
-    });
-    if(this.value) $(div).summernote('insertNode', $(`<div>${this.value}</div>`)[0]);
-  }
-  attached(){
-    if(!stylesLoaded){
-      stylesLoaded = true;
-      DOM.injectStyles(css);
+    bind() {
+        // merge the global options with any instance options
+        this.options = Object.assign({}, defaultConfig, this.options);
     }
-  }
+
+    attached() {
+        // initialize a new instance of the Quill editor
+        // with the supplied options
+        this.editor = new Quill(this.editor, this.options);
+        if (this.value) {
+            this.editor.root.innerHTML = this.value;
+        }
+        // listen for changes and update the value
+        this.editor.on('text-change', this.onTextChanged);
+    }
+
+    onTextChanged = () => {
+        this.value = this.editor.root.innerHTML;
+    }
+
+    detached() {
+        // clean up
+        this.editor.off('text-change', this.onTextChanged);
+        this.editor = null;
+    }
 }
