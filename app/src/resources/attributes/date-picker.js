@@ -3,6 +3,7 @@ import $ from 'jquery'
 import datepicker from 'bootstrap-datepicker'
 import css from 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css!text'
 import {DOM} from 'aurelia-pal'
+import dateFormatter from './../../common/date-formatter'
 
 let stylesLoaded = false;
 
@@ -12,11 +13,10 @@ export class DatePickerCustomAttribute {
   constructor(element){
     $(element).datepicker({format: {
         toDisplay:  (date, format, language) => {
-              return this.format.format(Date.parse(date));
+              return dateFormatter.toView(date);
           },
           toValue:  (date, format, language) => {
-              let [d,m,y] = date.split('/');
-              return new Date(y,m + 1,d);
+              return dateFormatter.fromView(date);
           }
         }
       });
