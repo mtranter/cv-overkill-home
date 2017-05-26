@@ -12,7 +12,7 @@ let defaultConfig = {
     };
 
 @inlineView(`<template>
-  <require from="quill/dist/quill.snow.css"></require>
+  <require from="quill/dist/quill.bubble.css"></require>
     <div ref="editor"></div>
 </template>`)
 @customElement('html-editor')
