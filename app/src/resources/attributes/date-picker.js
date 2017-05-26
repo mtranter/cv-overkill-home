@@ -8,9 +8,18 @@ let stylesLoaded = false;
 
 @inject(Element)
 export class DatePickerCustomAttribute {
+  format = new Intl.DateTimeFormat(navigator.language);
   constructor(element){
-    console.log(datepicker);
-    $(element).datepicker({format: "dd/mm/yyyy"});
+    $(element).datepicker({format: {
+        toDisplay: function (date, format, language) {
+              return this.format.format(Date.parse(value));
+          },
+          toValue: function (date, format, language) {
+              let [d,m,y] = data.split('/');
+              return new Date(y,m + 1,d);
+          }
+        }
+      });
   }
   attached(){
     if(!stylesLoaded){
