@@ -12,10 +12,10 @@ export class DatePickerCustomAttribute {
   constructor(element){
     $(element).datepicker({format: {
         toDisplay:  (date, format, language) => {
-              return this.format.format(Date.parse(value));
+              return this.format.format(Date.parse(date));
           },
           toValue:  (date, format, language) => {
-              let [d,m,y] = data.split('/');
+              let [d,m,y] = date.split('/');
               return new Date(y,m + 1,d);
           }
         }
