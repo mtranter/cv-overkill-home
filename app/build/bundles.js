@@ -25,7 +25,7 @@ module.exports = {
         "bootstrap-datepicker",
         "bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css!text",
         "quill",
-        "quill/dist/quill.bubble.css!text"
+        "quill/dist/quill.snow.css!text"
       ],
       "options": {
         "inject": true,
