@@ -24,8 +24,8 @@ module.exports = {
         "cferdinandi/smooth-scroll",
         "bootstrap-datepicker",
         "bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css!text",
-        'bootstrap-wysiwyg',
-        'bootstrap-wysiwyg/css/style.css!text'
+        "summernote",
+        "summernote/dist/summernote.css!text"
       ],
       "options": {
         "inject": true,

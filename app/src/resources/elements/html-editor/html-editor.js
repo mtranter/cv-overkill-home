@@ -1,6 +1,6 @@
 import {bindable, bindingMode, inject} from 'aurelia-framework';
-import editor from 'bootstrap-wysiwyg'
-import css from 'bootstrap-wysiwyg/css/style.css!text'
+import summernote from 'summernote'
+import css from 'summernote/dist/summernote.css!text'
 import {DOM} from 'aurelia-pal'
 
 let stylesLoaded = false;
@@ -13,7 +13,7 @@ export class HtmlEditorCustomElement {
   }
   bind(){
     let div = this.element.getElementsByTagName('div')[0];
-    $(div).wysiwyg();
+    $(div).summernote();
   }
   attached(){
     if(!stylesLoaded){
