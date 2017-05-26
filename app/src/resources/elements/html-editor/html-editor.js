@@ -8,11 +8,11 @@ import {
 import Quill from 'quill';
 let defaultConfig = {
         modules: { toolbar: true },
-        theme: 'snow'
+        theme: 'bubble'
     };
 
 @inlineView(`<template>
-  <require from="quill/dist/quill.snow.css"></require>
+  <require from="quill/dist/quill.bubble.css"></require>
     <div ref="editor"></div>
 </template>`)
 @customElement('html-editor')
