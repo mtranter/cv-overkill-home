@@ -32,12 +32,12 @@ System.config({
     "bluebird": "npm:bluebird@3.4.1",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "bootstrap-datepicker": "npm:bootstrap-datepicker@1.6.4",
+    "bootstrap-wysiwyg": "npm:bootstrap-wysiwyg@2.0.1",
     "cferdinandi/smooth-scroll": "github:cferdinandi/smooth-scroll@11.0.2",
     "fetch": "github:github/fetch@1.0.0",
     "font-awesome": "npm:font-awesome@4.6.3",
     "immutable": "npm:immutable@3.8.1",
     "jquery": "npm:jquery@2.2.4",
-    "summernote": "npm:summernote@0.8.3",
     "text": "github:systemjs/plugin-text@0.0.8",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
@@ -236,11 +236,6 @@ System.config({
       "jquery": "npm:jquery@2.2.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:bootstrap@3.3.7": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:browserify-zlib@0.1.4": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
@@ -410,10 +405,6 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "buffer-shims": "npm:buffer-shims@1.0.0"
     },
-    "npm:summernote@0.8.3": {
-      "bootstrap": "npm:bootstrap@3.3.7",
-      "jquery": "npm:jquery@2.2.4"
-    },
     "npm:ua-parser-js@0.7.12": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
@@ -435,20 +426,17 @@ System.config({
     }
   },
   depCache: {
-    "npm:summernote@0.8.3.js": [
-      "npm:summernote@0.8.3/dist/summernote.js"
-    ],
-    "npm:summernote@0.8.3/dist/summernote.js": [
-      "jquery"
-    ],
-    "npm:jquery@2.2.4.js": [
-      "npm:jquery@2.2.4/dist/jquery.js"
+    "npm:bootstrap-wysiwyg@2.0.1.js": [
+      "npm:bootstrap-wysiwyg@2.0.1/js/bootstrap-wysiwyg.min.js"
     ],
     "npm:bootstrap-datepicker@1.6.4.js": [
       "npm:bootstrap-datepicker@1.6.4/dist/js/bootstrap-datepicker.js"
     ],
     "npm:bootstrap-datepicker@1.6.4/dist/js/bootstrap-datepicker.js": [
       "jquery"
+    ],
+    "npm:jquery@2.2.4.js": [
+      "npm:jquery@2.2.4/dist/jquery.js"
     ],
     "github:cferdinandi/smooth-scroll@11.0.2.js": [
       "github:cferdinandi/smooth-scroll@11.0.2/dist/js/smooth-scroll.min.js"
@@ -522,7 +510,14 @@ System.config({
       "aurelia-framework",
       "jquery",
       "bootstrap-datepicker",
-      "bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css!text"
+      "bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css!text",
+      "aurelia-pal"
+    ],
+    "resources/elements/html-editor/html-editor.js": [
+      "aurelia-framework",
+      "bootstrap-wysiwyg",
+      "bootstrap-wysiwyg/css/style.css!text",
+      "aurelia-pal"
     ],
     "resources/elements/menu/menu.js": [
       "aurelia-framework",
@@ -541,11 +536,11 @@ System.config({
       "npm:bootstrap-datepicker@1.6.4.js",
       "npm:bootstrap-datepicker@1.6.4/dist/css/bootstrap-datepicker.min.css!github:systemjs/plugin-text@0.0.8.js",
       "npm:bootstrap-datepicker@1.6.4/dist/js/bootstrap-datepicker.js",
+      "npm:bootstrap-wysiwyg@2.0.1.js",
+      "npm:bootstrap-wysiwyg@2.0.1/css/style.css!github:systemjs/plugin-text@0.0.8.js",
+      "npm:bootstrap-wysiwyg@2.0.1/js/bootstrap-wysiwyg.min.js",
       "npm:jquery@2.2.4.js",
-      "npm:jquery@2.2.4/dist/jquery.js",
-      "npm:summernote@0.8.3.js",
-      "npm:summernote@0.8.3/dist/summernote.css!github:systemjs/plugin-text@0.0.8.js",
-      "npm:summernote@0.8.3/dist/summernote.js"
+      "npm:jquery@2.2.4/dist/jquery.js"
     ],
     "app-build.js": [
       "admin/admin.css!github:systemjs/plugin-text@0.0.8.js",
@@ -571,6 +566,8 @@ System.config({
       "login/login.js",
       "main.js",
       "resources/attributes/date-picker.js",
+      "resources/elements/html-editor/html-editor.html!github:systemjs/plugin-text@0.0.8.js",
+      "resources/elements/html-editor/html-editor.js",
       "resources/elements/menu/menu.css!github:systemjs/plugin-text@0.0.8.js",
       "resources/elements/menu/menu.html!github:systemjs/plugin-text@0.0.8.js",
       "resources/elements/menu/menu.js",

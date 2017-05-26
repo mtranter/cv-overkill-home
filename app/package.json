@@ -84,12 +84,12 @@
       "bluebird": "npm:bluebird@3.4.1",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "bootstrap-datepicker": "npm:bootstrap-datepicker@^1.6.4",
+      "bootstrap-wysiwyg": "npm:bootstrap-wysiwyg@^2.0.1",
       "cferdinandi/smooth-scroll": "github:cferdinandi/smooth-scroll@^11.0.2",
       "fetch": "github:github/fetch@^1.0.0",
       "font-awesome": "npm:font-awesome@4.6.3",
       "immutable": "npm:immutable@^3.8.1",
       "jquery": "npm:jquery@^2.2.4",
-      "summernote": "npm:summernote@^0.8.3",
       "text": "github:systemjs/plugin-text@^0.0.8"
     },
     "devDependencies": {}
