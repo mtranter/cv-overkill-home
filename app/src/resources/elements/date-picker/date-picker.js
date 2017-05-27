@@ -16,7 +16,7 @@ export class DatePickerCustomElement {
   @bindable cssClass;
   bind(){
     $(this.editor).datepicker({
-      defaultViewDate: this.value,
+      defaultViewDate: new Date(Date.parse(this.value)),
       format: {
           toDisplay:  (date, format, language) => {
               return dateFormatter.toView(date);

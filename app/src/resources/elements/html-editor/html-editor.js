@@ -33,7 +33,7 @@ export class HtmlEditor {
             this.editor.root.innerHTML = this.value;
         }
         // listen for changes and update the value
-        this.editor.on('text-change', this.onTextChanged);
+        this.editor.on('text-change', (this.onTextChanged));
     }
 
     onTextChanged = () => {
