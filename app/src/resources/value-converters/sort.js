@@ -4,7 +4,7 @@ export class SortValueConverter {
     return (array || [])
       .slice(0)
       .sort((a, b) => {
-        return (a[config.propertyName] < b[config.propertyName] ? 1 : -1) * factor
+        return (a[config.propertyName] < b[config.propertyName] ? -1 : 1) * factor
       });
   }
 }
