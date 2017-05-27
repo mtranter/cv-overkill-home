@@ -26,7 +26,7 @@ export class DatePickerCustomElement {
           }
         }
       }).on('changeDate', d => {
-        this.value = d.toISOString();
+        this.value = d.date.toISOString();
       });
   }
 }
