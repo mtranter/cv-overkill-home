@@ -6,7 +6,7 @@ import dateFormatter from './../../../common/date-formatter'
 
 
 @inlineView(`<template>
-    <input ref="editor" value.bind="value" placeholder.bind="placeholder" class.bind="cssClass"></input>
+    <input ref="editor" placeholder.bind="placeholder" class.bind="cssClass"></input>
 </template>`)
 @viewResources('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
 @inject(Element)
