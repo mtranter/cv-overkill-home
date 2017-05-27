@@ -16,7 +16,6 @@ export class DatePickerCustomElement {
   @bindable cssClass;
   bind(){
     $(this.editor).datepicker({
-      defaultViewDate: new Date(Date.parse(this.value)),
       format: {
           toDisplay:  (date, format, language) => {
               return dateFormatter.toView(date);
@@ -28,5 +27,6 @@ export class DatePickerCustomElement {
       }).on('changeDate', d => {
         this.value = d.date.toISOString();
       });
+      $(this.editor).datepicker('setUTCDate', new Date(Date.parse(this.value)));
   }
 }
