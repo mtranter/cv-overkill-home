@@ -1,4 +1,4 @@
-import {inject, bindable, viewResources} from 'aurelia-framework';
+import {inject, bindable, inlineView, viewResources} from 'aurelia-framework';
 import $ from 'jquery'
 import datepicker from 'bootstrap-datepicker'
 import {DOM} from 'aurelia-pal'
