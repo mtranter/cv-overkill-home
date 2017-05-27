@@ -25,7 +25,7 @@ export class DatePickerCustomElement {
           }
         }
       }).on('changeDate', d => {
-        this.value = d.date.toISOString();
+        this.value = (d.date ? d.date.toISOString() : null);
       });
       $(this.editor).datepicker('setDate', new Date(Date.parse(this.value)));
   }
