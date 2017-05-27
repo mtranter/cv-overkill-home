@@ -2,7 +2,7 @@ import {inject, bindable, viewResources} from 'aurelia-framework';
 import $ from 'jquery'
 import datepicker from 'bootstrap-datepicker'
 import {DOM} from 'aurelia-pal'
-import dateFormatter from './../../common/date-formatter'
+import dateFormatter from './../../../common/date-formatter'
 
 
 @inlineView(`<template>
