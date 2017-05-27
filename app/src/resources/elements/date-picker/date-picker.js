@@ -1,4 +1,4 @@
-import {inject, bindable, inlineView, viewResources} from 'aurelia-framework';
+import {inject, bindable, bindingMode,inlineView, viewResources} from 'aurelia-framework';
 import $ from 'jquery'
 import datepicker from 'bootstrap-datepicker'
 import {DOM} from 'aurelia-pal'
@@ -11,7 +11,7 @@ import dateFormatter from './../../../common/date-formatter'
 @viewResources('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
 @inject(Element)
 export class DatePickerCustomElement {
-  @bindable value;
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
   @bindable placeholder;
   @bindable cssClass;
   bind(){
