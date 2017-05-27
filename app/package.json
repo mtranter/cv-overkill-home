@@ -91,6 +91,7 @@
       "froala-editor": "npm:froala-editor@^2.6.1",
       "immutable": "npm:immutable@^3.8.1",
       "jquery": "npm:jquery@^2.2.4",
+      "moment": "npm:moment@^2.18.1",
       "quill": "npm:quill@^1.2.4",
       "text": "github:systemjs/plugin-text@^0.0.8"
     },
