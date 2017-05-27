@@ -27,6 +27,6 @@ export class DatePickerCustomElement {
       }).on('changeDate', d => {
         this.value = d.date.toISOString();
       });
-      $(this.editor).datepicker('setUTCDate', new Date(Date.parse(this.value)));
+      $(this.editor).datepicker('setDate', new Date(Date.parse(this.value)));
   }
 }
