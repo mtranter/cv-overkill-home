@@ -13,7 +13,7 @@ let defaultConfig = {
 
 @inlineView(`<template>
   <require from="quill/dist/quill.snow.css"></require>
-    <div ref="editor"></div>
+    <div ref="editorEl"></div>
 </template>`)
 @customElement('html-editor')
 export class HtmlEditor {
@@ -28,7 +28,7 @@ export class HtmlEditor {
     attached() {
         // initialize a new instance of the Quill editor
         // with the supplied options
-        this.editor = new Quill(this.editor, this.options);
+        this.editor = new Quill(this.editorEl, this.options);
         if (this.value) {
             this.editor.root.innerHTML = this.value;
         }
