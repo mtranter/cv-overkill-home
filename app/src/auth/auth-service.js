@@ -99,7 +99,7 @@ export class AuthService {
     return {
       request(request) {
         if (auth.isAuthenticated()) {
-          let token = storage.get(c.url.indexOf('marktranter.eu.auth0.com') === -1 ? token_storage_key : auth0_access_storage_key);
+          let token = storage.get(request.url.indexOf('marktranter.eu.auth0.com') === -1 ? token_storage_key : auth0_access_storage_key);
           token = `Bearer ${token}`;
           request.headers.set('Authorization', token);
         }
