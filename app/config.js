@@ -12,7 +12,7 @@ System.config({
       "format": "global"
     },
     "moment": {
-      "format": "amd"
+      "format": "cjs"
     }
   },
   map: {
