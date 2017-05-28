@@ -8,6 +8,7 @@ import jwt from './jwt'
 const token_regex = new RegExp("[\?&#]id_token=([^&]*)");
 const access_regex = new RegExp("[\?&#]access_token=([^&]*)");
 const token_storage_key = 'auth0.jwt';
+const auth0_access_storage_key = 'auth0.access';
 
 //Internal class. Mock in tests
 class BrowerPopup {
@@ -77,13 +78,13 @@ export class AuthService {
               window.clearInterval(pollTimer);
               let results = token_regex.exec(win.url);
               let access = access_regex.exec(win.url);
-              console.log(access[1])
               win.close();
               if( results == null ){
                 reject(`No auth token supplied in callback from ${provider}`)
               }
               else {
                 this.storage.set(token_storage_key, results[1]);
+                this.storage.set(auth0_access_storage_key, access[1]);
                 resolve(this.roleManager.setToken('marktranter.eu.auth0.com', results[1]));
               }
             }
@@ -92,16 +93,13 @@ export class AuthService {
       }, 100);
     });
   }
-  getUserProfile() {
-    return this.storage.get('user.profile')
-  }
   get tokenInterceptor() {
     let storage = this.storage;
     let auth = this;
     return {
       request(request) {
         if (auth.isAuthenticated()) {
-          let token = storage.get(token_storage_key);
+          let token = storage.get(c.url.indexOf('marktranter.eu.auth0.com') === -1 ? token_storage_key : auth0_access_storage_key);
           token = `Bearer ${token}`;
           request.headers.set('Authorization', token);
         }
