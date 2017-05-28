@@ -11,8 +11,8 @@ System.config({
       "exports": "AWS",
       "format": "global"
     },
-    "moment": {
-      "format": "amd"
+    "moment/moment.js": {
+      "format": "cjs"
     }
   },
   map: {
