@@ -3,8 +3,10 @@ import {
     bindingMode,
     inlineView,
     customElement,
-    Container
+    Container,
+    inject
 } from 'aurelia-framework';
+import {BindingEngine} from 'aurelia-binding';
 import Quill from 'quill';
 let defaultConfig = {
         modules: { toolbar: true },
@@ -16,10 +18,16 @@ let defaultConfig = {
     <div ref="editorEl"></div>
 </template>`)
 @customElement('html-editor')
+@inject(BindingEngine)
 export class HtmlEditor {
     @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
     @bindable options; // per instance options
-
+    subscription = () => {}
+    constructor(bindingEngine){
+      this.bindingEngine = bindingEngine;
+      this.subscription = bindingEngine.propertyObserver(this, 'value')
+      .subscribe((newValue, oldValue) => this.editor.root.innerHTML = this.value);
+    }
     bind() {
         // merge the global options with any instance options
         this.options = Object.assign({}, defaultConfig, this.options);
@@ -42,6 +50,7 @@ export class HtmlEditor {
 
     detached() {
         // clean up
+        this.subscription.dispose();
         this.editor.off('text-change', this.onTextChanged);
         this.editor = null;
     }
