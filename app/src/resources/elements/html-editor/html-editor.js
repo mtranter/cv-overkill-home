@@ -41,7 +41,7 @@ export class HtmlEditor {
         // listen for changes and update the value
         this.editor.on('text-change', (this.onTextChanged));
 
-        this.subscription = bindingEngine.propertyObserver(this, 'value')
+        this.subscription = this.bindingEngine.propertyObserver(this, 'value')
         .subscribe((newValue, oldValue) => {
           if(this.value !== this.editor.root.innerHTML) {
             this.editor.root.innerHTML = this.value;
