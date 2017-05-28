@@ -77,6 +77,7 @@ export class AuthService {
               window.clearInterval(pollTimer);
               let results = token_regex.exec(win.url);
               let access = access_regex.exec(win.url);
+              console.log(access[1])
               win.close();
               if( results == null ){
                 reject(`No auth token supplied in callback from ${provider}`)
