@@ -25,8 +25,6 @@ export class HtmlEditor {
     subscription = () => {}
     constructor(bindingEngine){
       this.bindingEngine = bindingEngine;
-      this.subscription = bindingEngine.propertyObserver(this, 'value')
-      .subscribe((newValue, oldValue) => this.editor.root.innerHTML = this.value);
     }
     bind() {
         // merge the global options with any instance options
@@ -42,6 +40,13 @@ export class HtmlEditor {
         }
         // listen for changes and update the value
         this.editor.on('text-change', (this.onTextChanged));
+
+        this.subscription = bindingEngine.propertyObserver(this, 'value')
+        .subscribe((newValue, oldValue) => {
+          if(this.value !== this.editor.root.innerHTML) {
+            this.editor.root.innerHTML = this.value;
+          }
+        });
     }
 
     onTextChanged = () => {
