@@ -4,7 +4,26 @@
   </div>
   <div class="row">
     <div class="col-md-6 col-offset-md-3">
-      ${profile.name}
+      Hi, ${profile.name}
+      <br/>
+      Welcome to the admin pages of my CV.
+      <br/>
+      I'll let you in here for a look around, but you won't be able to save any changes unless you're me.
+      <span if.bind="profile.user_id !== 'github|3257273'">(Which you aren't)</span>
+      <br/>
+      I'm using Auth0 to do Auth, and AWS Cognito to provide anonymous profile tracking and access to my backend services.
+      <br/>
+      It all seems to work pretty well.
+      <br/>
+      I see you've signed in with ${profile.identities[0].provider}.
+      <br/>
+      Why don't you
+      <span if.bind="profile.identities[0].provider === 'github'">
+        <a href="https://github.com/mtranter">follow me?</a>
+      </span>
+      <span if.bind="profile.identities[0].provider === 'linkedin'">
+        <a href="https://www.linkedin.com/in/markatranter/">connect with me?</a>
+      </span>
     </div>
   </div>
 </template>
