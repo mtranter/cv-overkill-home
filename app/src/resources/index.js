@@ -3,6 +3,7 @@ export function configure(config) {
     './elements/menu/menu',
     './elements/date-picker/date-picker',
     './elements/html-editor/html-editor',
+    './elements/circle-break/circle-break.html',
     './value-converters/short-date-value-converter.js',
     './value-converters/sort.js']);
 }
