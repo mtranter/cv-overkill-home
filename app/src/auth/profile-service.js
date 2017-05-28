@@ -1,7 +1,7 @@
-import {http} from 'aurelia-fetch-client'
+import {HttpClient} from 'aurelia-fetch-client'
 import {inject} from 'aurelia-framework'
 
-@inject(http)
+@inject(HttpClient)
 export class ProfileService {
   _profile = null
   constructor(http){
