@@ -4,9 +4,9 @@ import {
     inlineView,
     customElement,
     Container,
-    inject
+    inject,
+    BindingEngine
 } from 'aurelia-framework';
-import {BindingEngine} from 'aurelia-binding';
 import Quill from 'quill';
 let defaultConfig = {
         modules: { toolbar: true },
