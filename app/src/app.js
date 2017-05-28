@@ -10,7 +10,7 @@ export class App {
   }
   configureRouter(config, router) {
     this.router = router;
-    config.title = 'Aurelia';
+    config.title = 'Mark';
     config.addPipelineStep('authorize', AuthorizeStep);
     let routes = [
       { route: ['', 'home'],       name: 'home',       moduleId: 'home/index' },
