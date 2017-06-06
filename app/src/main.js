@@ -26,7 +26,7 @@ export function configure(aurelia) {
     cfg
     .plugin({moduleId: 'experience/plugin', resourcesRelativeTo:['experience',''], config:{}} )
     .plugin({moduleId: 'profile/plugin', resourcesRelativeTo:['profile',''], config:{}})
-    .plugin({moduleId: 'skills/plugin', resourcesRelativeTo:['profile',''], config:{}});
+    .plugin({moduleId: 'skills/plugin', resourcesRelativeTo:['skills',''], config:{}});
   }
 
   if (environment.debug) {
