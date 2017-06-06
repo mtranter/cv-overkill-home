@@ -22,6 +22,8 @@ module.exports = {
         "bootstrap/css/bootstrap.css!text",
         "fetch",
         "cferdinandi/smooth-scroll",
+        "bootstrap-slider",
+        "bootstrap-slider/dist/css/bootstrap-slider.min.css!text",
         "bootstrap-datepicker",
         "bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css!text",
         "quill",

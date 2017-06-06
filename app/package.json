@@ -84,6 +84,7 @@
       "bluebird": "npm:bluebird@3.4.1",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "bootstrap-datepicker": "npm:bootstrap-datepicker@^1.6.4",
+      "bootstrap-slider": "npm:bootstrap-slider@^9.8.0",
       "bootstrap-wysiwyg": "npm:bootstrap-wysiwyg@^2.0.1",
       "cferdinandi/smooth-scroll": "github:cferdinandi/smooth-scroll@^11.0.2",
       "fetch": "github:github/fetch@^1.0.0",

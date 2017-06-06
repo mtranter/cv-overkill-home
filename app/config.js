@@ -35,6 +35,7 @@ System.config({
     "bluebird": "npm:bluebird@3.4.1",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "bootstrap-datepicker": "npm:bootstrap-datepicker@1.6.4",
+    "bootstrap-slider": "npm:bootstrap-slider@9.8.0",
     "bootstrap-wysiwyg": "npm:bootstrap-wysiwyg@2.0.1",
     "cferdinandi/smooth-scroll": "github:cferdinandi/smooth-scroll@11.0.2",
     "fetch": "github:github/fetch@1.0.0",
@@ -239,6 +240,9 @@ System.config({
     "npm:bootstrap-datepicker@1.6.4": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "jquery": "npm:jquery@2.2.4",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:bootstrap-slider@9.8.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:browserify-zlib@0.1.4": {
