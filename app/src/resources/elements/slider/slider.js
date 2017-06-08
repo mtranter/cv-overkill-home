@@ -10,8 +10,8 @@ export class SliderCustomElement {
     this.el = el
   }
   bind() {
-    let mySlider = new Slider(this.el, this.opts);
-
-    mySlider.on('change', o => this.value = o.newValue);
+    let slider = new Slider(this.el, this.opts);
+    slider.on('change', o => this.value = o.newValue);
+    slider.setValue(this.value);
   }
 }
