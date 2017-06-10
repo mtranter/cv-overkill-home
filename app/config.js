@@ -43,6 +43,7 @@ System.config({
     "cferdinandi/smooth-scroll": "github:cferdinandi/smooth-scroll@11.0.2",
     "fetch": "github:github/fetch@1.0.0",
     "font-awesome": "npm:font-awesome@4.6.3",
+    "froala-editor": "npm:froala-editor@2.6.1",
     "immutable": "npm:immutable@3.8.1",
     "jquery": "npm:jquery@2.2.4",
     "moment": "npm:moment@2.18.1",
@@ -297,6 +298,10 @@ System.config({
     },
     "npm:font-awesome@4.6.3": {
       "css": "github:systemjs/plugin-css@0.1.34"
+    },
+    "npm:froala-editor@2.6.1": {
+      "font-awesome": "npm:font-awesome@4.6.3",
+      "jquery": "npm:jquery@2.2.4"
     },
     "npm:https-browserify@0.0.0": {
       "http": "github:jspm/nodelibs-http@1.7.1"
