@@ -6,6 +6,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   meta: {
     "AWS": {
       "exports": "AWS",
@@ -15,6 +16,7 @@ System.config({
       "format": "cjs"
     }
   },
+
   map: {
     "AWS": "aws-sdk-2.50.0.min.js",
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.1",
@@ -28,6 +30,7 @@ System.config({
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.2.1",
     "aurelia-polyfills": "npm:aurelia-polyfills@1.1.1",
     "aurelia-router": "npm:aurelia-router@1.3.0",
+    "aurelia-templating": "npm:aurelia-templating@1.4.2",
     "aurelia-templating-binding": "npm:aurelia-templating-binding@1.0.0",
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.4.0",
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0",
