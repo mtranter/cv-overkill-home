@@ -1,6 +1,6 @@
 import {All, inject} from 'aurelia-framework';
 import aws from 'AWS'
-const widgetOrder = ['profile','experience','skills'];
+const widgetOrder = ['profile','experience','skills', 'contact'];
 
 @inject(All.of('plugin.widget.homepage.component'))
 export class HomeWidgetsService {
